@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Saffron Tourism - Tourism Website</title>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+    <div class="logo">
+        <img src="Saffron_Logo.jpeg" alt="Saffron Tourism Logo" class="logo-img">
+        <h2>Saffron Tourism</h2>
+    </div>
+
+    <nav>
+        <a href="myaccount.php">My Account</a>
+        <a href="register.html">Register</a>
+        <a href="Contact.html">Contact Us</a>
+        <div class="menu-icon"></div>
+    </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+    <div class="hero-overlay">
+        <h1>BOOK 3 MONTHS BEFORE TOUR DATE</h1>
+        <h2>AND GET 5% OFF ON YOUR TOUR</h2>
+
+        <form action="booking.html" method="GET" class="search-bar">
+            <select name="place" required>
+                <option value="">Select Category</option>
+                <option value="Andaman">Andaman</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Kashmir">Kashmir</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+            </select>
+
+            <input type="date" name="date" required>
+
+            <select name="people" required>
+                <option value="">Number of People</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</section>
+
+<!-- ================= POPULAR ================= -->
+<section class="popular">
+    <h2>Popular Tours</h2>
+
+    <div class="tour-container">
+
+        <!-- Andaman -->
+        <div class="card andaman">
+            <div class="card-img">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/02/59/36/0a/ross-island.jpg?w=1400&h=1400&s=1" alt="Andaman and Nicobar">
+            </div>
+            <div class="card-content">
+                <h3>Andaman & Nicobar</h3>
+                <p>5 Days</p>
+                <span>From Rs.35,000</span>
+                <button class="book-btn" onclick="window.location.href='booking.html?place=Andaman'">
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Rajasthan -->
+        <div class="card rajasthan">
+            <div class="card-img">
+                <img src="https://indiaholidaymall.com/images/highlights/6-Top-Rajasthan-Tourist-Places.jpg" alt="Rajasthan">
+            </div>
+            <div class="card-content">
+                <h3>Rajasthan</h3>
+                <p>6 Days</p>
+                <span>From Rs.28,000</span>
+                <button class="book-btn" onclick="window.location.href='booking.html?place=Rajasthan'">
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Kashmir -->
+        <div class="card kashmir">
+            <div class="card-img">
+                <img src="https://media.cntraveler.com/photos/643d5d0a5722b1af03793a06/16:9/w_2560%2Cc_limit/Dal%2520Lake_GettyImages-1323846766.jpg" alt="Kashmir">
+            </div>
+            <div class="card-content">
+                <h3>Kashmir</h3>
+                <p>5 Days</p>
+                <span>From Rs.32,000</span>
+                <button class="book-btn" onclick="window.location.href='booking.html?place=Kashmir'">
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Kerala -->
+        <div class="card kerala">
+            <div class="card-img">
+                <img src="https://lumiereholidays.com/storage/pageContent/1749716093684a8c7d42359.jpeg" alt="Kerala">
+            </div>
+            <div class="card-content">
+                <h3>Kerala</h3>
+                <p>4 Days</p>
+                <span>From Rs.25,000</span>
+                <button class="book-btn" onclick="window.location.href='booking.html?place=Kerala'">
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Uttar Pradesh -->
+        <div class="card up">
+            <div class="card-img">
+                <img src="https://i0.wp.com/www.humansofuttarakhand.com/wp-content/uploads/2020/07/HOU-DEVPARYAG-3.jpg" alt="Uttar Pradesh">
+            </div>
+            <div class="card-content">
+                <h3>Uttar Pradesh</h3>
+                <p>6 Days</p>
+                <span>From Rs.45,000</span>
+                <button class="book-btn" onclick="window.location.href='booking.html?place=Uttar%20Pradesh'">
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about">
+    <div class="about-left">
+        <h2>Explore India with us</h2>
+        <p>
+            We believe that travelling across India should be an unforgettable experience.
+            From the snow-covered mountains of Kashmir to the serene backwaters of Kerala,
+            our tours let you discover the rich history, vibrant culture, and diverse
+            landscapes of our country. We design every journey to give you a true taste
+            of India's beauty and heritage.
+        </p>
+    </div>
+
+    <div class="about-right">
+        <ul>
+            <li>Passionate expert tour managers</li>
+            <li>Nationwide pick up points</li>
+            <li>24 hour enquiry team</li>
+            <li>Handpicked hotels</li>
+            <li>Tips included on European holidays</li>
+        </ul>
+        <button class="about-btn">About Us</button>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <div class="footer-left">
+        <h3>Subscribe for Special Offers</h3>
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+    </div>
+
+    <div class="footer-links">
+        <div>
+            <h4>Information</h4>
+            <a href="#">FAQs</a>
+            <a href="#">Payment Details</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div>
+            <h4>Destinations</h4>
+            <a href="#">Andaman</a>
+            <a href="#">Kashmir</a>
+            <a href="#">Kerala</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

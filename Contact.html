@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - Saffron Tourism</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+    <div class="logo">
+        <img src="Saffron_Logo.jpeg" alt="Saffron Tourism Logo" class="logo-img">
+        <h2>Saffron Tourism</h2>
+    </div>
+
+    <nav>
+        <a href="#">My Account</a>
+        <a href="#">Basket</a>
+        <a href="#">Contact Us</a>
+        <div class="menu-icon"></div>
+    </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="contact-hero">
+    <h1>Contact Us</h1>
+</section>
+
+<!-- ================= CONTACT SECTION ================= -->
+<section class="contact-container">
+
+    <!-- LEFT: FORM -->
+    <div class="contact-form">
+        <h2>Get in Touch</h2>
+
+        <form action="contact.php" method="POST">
+            <label>Name *</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+
+            <label>Email *</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <label>Phone *</label>
+            <input type="text" name="phone" placeholder="Enter your number" required>
+
+            <label>Message *</label>
+            <textarea name="message" placeholder="Write your message..." required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <!-- RIGHT: DETAILS -->
+    <div class="contact-info">
+        <h2>Saffron Tourism</h2>
+
+        <p>
+            Explore India with trusted travel experts.  
+            Custom tours, curated experiences, and seamless journeys.
+        </p>
+
+        <h3>Office Address</h3>
+        <p>
+            21 MG Road, New Delhi <br>
+            India - 110001
+        </p>
+
+        <h3>Contact</h3>
+        <p>
+            +91 98765 43210 <br>
+            +91 91234 56789
+        </p>
+
+        <h3>Email</h3>
+        <p>
+            info@saffrontourism.com <br>
+            support@saffrontourism.com
+        </p>
+    </div>
+
+</section>
+
+<!-- ================= MAP ================= -->
+<section class="map">
+    <iframe 
+        src="https://maps.google.com/maps?q=india&t=&z=5&ie=UTF8&iwloc=&output=embed">
+    </iframe>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <div class="footer-left">
+        <h3>Subscribe for Special Offers</h3>
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+    </div>
+
+    <div class="footer-links">
+        <div>
+            <h4>Information</h4>
+            <a href="#">FAQs</a>
+            <a href="#">Payment Details</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div>
+            <h4>Destinations</h4>
+            <a href="#">Andaman</a>
+            <a href="#">Kashmir</a>
+            <a href="#">Kerala</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

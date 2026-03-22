@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tour - Saffron Tourism</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <img src="Saffron_Logo.jpeg" alt="Saffron Tourism Logo" class="logo-img">
+        <h2>Saffron Tourism</h2>
+    </div>
+
+    <nav>
+        <a href="myaccount.php">My Account</a>
+        <a href="register.html">Register</a>
+        <a href="Contact.html">Contact Us</a>
+    </nav>
+</header>
+
+<section class="auth-container">
+    <div class="auth-box booking-box">
+        <h2>Book Your Tour</h2>
+
+        <form action="book.php" method="POST" id="booking-form">
+            <label for="destination">Destination</label>
+            <select id="destination" name="destination" required>
+                <option value="">Select Destination</option>
+                <option value="Andaman">Andaman</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Kashmir">Kashmir</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+            </select>
+
+            <label for="date">Start Date</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="days">Trip Duration (days)</label>
+            <input type="number" id="days" name="days" min="1" max="30" required>
+
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate" name="endDate" readonly>
+
+            <label for="people">Number of People</label>
+            <input type="number" id="people" name="people" min="1" max="250" required>
+
+            <label for="hotel">Hotel Preference</label>
+            <select id="hotel" name="hotel">
+                <option value="agency">Tourism Agency Hotel</option>
+                <option value="self">I will book my own hotel</option>
+            </select>
+
+            <label>Preferences</label>
+            <div class="preferences-group">
+                <label class="pref-option">
+                    <input type="checkbox" name="pref[]" value="breakfast">
+                    <span>Free Breakfast</span>
+                </label>
+                <label class="pref-option">
+                    <input type="checkbox" name="pref[]" value="cancellation">
+                    <span>Free Cancellation</span>
+                </label>
+                <label class="pref-option">
+                    <input type="checkbox" name="pref[]" value="rating">
+                    <span>4+ Star</span>
+                </label>
+            </div>
+
+            <button type="submit" class="auth-btn">Confirm Booking</button>
+        </form>
+    </div>
+</section>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const form = document.getElementById("booking-form");
+const destinationInput = document.getElementById("destination");
+const dateInput = document.getElementById("date");
+const daysInput = document.getElementById("days");
+const endDateInput = document.getElementById("endDate");
+const peopleInput = document.getElementById("people");
+
+destinationInput.value = params.get("place") || "";
+dateInput.value = params.get("date") || "";
+peopleInput.value = params.get("people") || "";
+daysInput.value = params.get("days") || "3";
+
+const today = new Date().toISOString().split("T")[0];
+dateInput.setAttribute("min", today);
+
+function calculateEndDate() {
+    if (!dateInput.value || !daysInput.value) {
+        endDateInput.value = "";
+        return;
+    }
+
+    const start = new Date(dateInput.value);
+    const days = parseInt(daysInput.value, 10);
+
+    if (Number.isNaN(days) || days < 1 || days > 30) {
+        endDateInput.value = "";
+        return;
+    }
+
+    const end = new Date(start);
+    end.setDate(end.getDate() + days);
+    endDateInput.value = end.toISOString().split("T")[0];
+}
+
+calculateEndDate();
+dateInput.addEventListener("change", calculateEndDate);
+daysInput.addEventListener("input", calculateEndDate);
+
+form.addEventListener("submit", function (e) {
+    const people = parseInt(peopleInput.value, 10);
+    const days = parseInt(daysInput.value, 10);
+
+    if (Number.isNaN(people) || people < 1 || people > 250) {
+        alert("Maximum 250 people allowed");
+        e.preventDefault();
+        return;
+    }
+
+    if (Number.isNaN(days) || days < 1 || days > 30) {
+        alert("Trip duration must be between 1 and 30 days");
+        e.preventDefault();
+        return;
+    }
+
+    if (!dateInput.value || dateInput.value < today) {
+        alert("Please choose today or a future date");
+        e.preventDefault();
+        return;
+    }
+
+    calculateEndDate();
+});
+</script>
+
+</body>
+</html>

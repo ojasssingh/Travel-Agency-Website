@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    background: #eeeeee;
+    display: flex;
+    justify-content: space-between; /* THIS pushes them apart */
+    align-items: center;
+    padding: 15px 40px;  /* fixed side spacing */
+    width: 100%;
+}
+
+/* Left Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-star {
+    width: 28px;
+    height: 28px;
+    background: black;  /* SVG placeholder */
+    border-radius: 50%;
+}
+
+.logo h2 {
+    font-size: 22px;
+}
+
+/* Right Navigation */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.hamburger {
+    display: none;
+    background: black;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ================= BOOKING FORM ================= */
+
+.booking-container {
+    width: 400px;
+    margin: 60px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.booking-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+}
+
+#confirmationMessage {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: green;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .nav-right a {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .booking-container {
+        width: 90%;
+    }
+}

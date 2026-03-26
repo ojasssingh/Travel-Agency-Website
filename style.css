@@ -143,10 +143,15 @@ nav a {
     background: #dfe6ee;
 }
 
+.popular h2 {
+    margin-bottom: 30px;
+}
+
 .tour-container {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .card {
@@ -155,6 +160,25 @@ nav a {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.6s ease;
+}
+
+.card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.card:focus-visible {
+    outline: 3px solid #1f2d3a;
+    outline-offset: 4px;
 }
 
 .card-img {
@@ -165,6 +189,11 @@ nav a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-img img {
+    transform: scale(1.08);
 }
 
 .card-content {
@@ -172,6 +201,10 @@ nav a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.card-content p {
+    margin-top: 6px;
 }
 
 .card-content h3 {
@@ -301,6 +334,9 @@ footer {
 .book-btn {
     margin-top: 15px;
     padding: 10px 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.35);
@@ -338,6 +374,11 @@ footer {
     transform: scale(1.08);
     background: rgba(255, 255, 255, 0.55);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.book-btn:focus-visible {
+    outline: 2px solid #1f2d3a;
+    outline-offset: 3px;
 }
 
 /* ================= AUTH PAGES ================= */
@@ -593,4 +634,42 @@ footer {
 .empty-state {
     color: #5e6f80;
     margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px 6%;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 120px 20px 40px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .search-bar select,
+    .search-bar input,
+    .search-bar button {
+        width: 100%;
+    }
+
+    .about,
+    footer {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
 }

@@ -7,19 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --star-blue: #005a9c; /* Deep Himalayan Blue */
-            --star-red: #c0392b;  /* Chinar Leaf Red */
+            --star-blue: #005a9c;
+            --star-red: #c0392b;
             --text-dark: #333;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Poppins', sans-serif; background: #fff; color: var(--text-dark); line-height: 1.6; }
 
-        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1920&q=80'); /* Representative Kashmir Image */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url('https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -27,53 +26,233 @@
         }
 
         nav.top-nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 25px 60px; position: absolute; width: 100%; z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 60px;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
         }
 
-        .logo { 
-            display: flex; align-items: center; font-weight: 600; font-size: 26px;
-            color: #1c2733; background: rgba(255,255,255,0.9);
-            padding: 8px 20px; border-radius: 50px; backdrop-filter: blur(2px);
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 26px;
+            color: #1c2733;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(2px);
         }
-        .logo img { height: 44px; width: auto; margin-right: 12px; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-size: 14px; font-weight: 600; }
 
-        .hero-content { position: absolute; bottom: 15%; left: 60px; }
-        .hero-content h1 { font-size: 85px; line-height: 0.9; margin-bottom: 15px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .hero-content p { font-size: 28px; font-weight: 400; opacity: 0.9; }
-
-        /* --- TABBED CONTENT --- */
-        .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-        .tab-menu { 
-            display: flex; border-bottom: 2px solid #eee; margin-bottom: 40px; 
-            position: sticky; top: 0; background: white; z-index: 5;
+        .logo img {
+            height: 44px;
+            width: auto;
+            margin-right: 12px;
         }
-        .tab-link { 
-            padding: 20px 40px; border: none; background: none; font-weight: 700; 
-            cursor: pointer; color: #888; transition: 0.3s; font-size: 14px;
+
+        .nav-links {
+            display: flex;
+            align-items: center;
         }
-        .tab-link.active { color: var(--star-blue); border-bottom: 4px solid var(--star-blue); }
 
-        .tab-panel { display: none; animation: fadeIn 0.4s ease; }
-        .tab-panel.active { display: block; }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
 
-        h2 { font-size: 32px; color: var(--star-blue); margin-bottom: 25px; font-weight: 700; }
-        .price-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .price-table th, .price-table td { padding: 15px; border: 1px solid #ddd; text-align: left; }
-        .price-table th { background: #f8f8f8; color: var(--star-blue); }
+        .hero-content {
+            position: absolute;
+            bottom: 15%;
+            left: 60px;
+        }
 
-        .itinerary-step { margin-bottom: 30px; border-left: 3px solid var(--star-red); padding-left: 20px; }
-        .itinerary-step h4 { color: var(--star-red); margin-bottom: 5px; font-size: 18px; }
+        .hero-content h1 {
+            font-size: 85px;
+            line-height: 0.9;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
 
-        .offer-box { background: #fdf2f2; border: 1px solid #f5c6cb; padding: 30px; border-radius: 8px; margin-bottom: 20px; }
-        .highlight-badge { background: #e1f5fe; color: var(--star-blue); padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; display: inline-block; }
+        .hero-content p {
+            font-size: 28px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-book-btn {
+            margin-top: 25px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ffffff, #e6f2ff);
+            color: var(--star-blue);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .hero-book-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .tab-menu {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 5;
+        }
+
+        .tab-link {
+            padding: 20px 40px;
+            border: none;
+            background: none;
+            font-weight: 700;
+            cursor: pointer;
+            color: #888;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .tab-link.active {
+            color: var(--star-blue);
+            border-bottom: 4px solid var(--star-blue);
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: var(--star-blue);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .price-table th {
+            background: #f8f8f8;
+            color: var(--star-blue);
+        }
+
+        .itinerary-step {
+            margin-bottom: 30px;
+            border-left: 3px solid var(--star-red);
+            padding-left: 20px;
+        }
+
+        .itinerary-step h4 {
+            color: var(--star-red);
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .offer-box {
+            background: #fdf2f2;
+            border: 1px solid #f5c6cb;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-badge {
+            background: #e1f5fe;
+            color: var(--star-blue);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 48px; }
-            .tab-link { padding: 12px 15px; font-size: 11px; }
+            nav.top-nav {
+                padding: 18px 20px;
+            }
+
+            .logo {
+                font-size: 18px;
+                padding: 6px 14px;
+            }
+
+            .logo img {
+                height: 36px;
+                margin-right: 10px;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                margin-left: 0;
+                font-size: 12px;
+            }
+
+            .hero-content {
+                left: 20px;
+                right: 20px;
+                bottom: 12%;
+            }
+
+            .hero-content h1 {
+                font-size: 48px;
+            }
+
+            .hero-content p {
+                font-size: 22px;
+            }
+
+            .tab-link {
+                padding: 12px 15px;
+                font-size: 11px;
+            }
         }
     </style>
 </head>
@@ -86,16 +265,18 @@
             SAFFRON TOURISM
         </div>
         <div class="nav-links">
-            <a href="#">My Account</a>
-            <a href="#">Basket</a>
-            <a href="#">Contact Us</a>
-            <a href="#" style="font-size: 22px;">☰</a>
+            <a href="index.html">Home</a>
+            <a href="myaccount.php">My Account</a>
+            <a href="Contact.html">Contact Us</a>
         </div>
     </nav>
 
     <div class="hero-content">
         <h1>Exotic <br>Kashmir</h1>
         <p>07 Days / 06 Nights Tour</p>
+        <button class="hero-book-btn" type="button" onclick="window.location.href='booking.html?place=Kashmir'">
+            Book Now
+        </button>
     </div>
 </div>
 
@@ -113,10 +294,10 @@
         <br>
         <div class="highlight-badge">TOUR HIGHLIGHTS</div>
         <ul style="margin-left: 20px;">
-            <li><strong>Srinagar (3N):</strong> Includes 1 Night in a luxury Houseboat & Shikara ride on Dal Lake.</li>
+            <li><strong>Srinagar (3N):</strong> Includes 1 Night in a luxury Houseboat &amp; Shikara ride on Dal Lake.</li>
             <li><strong>Pahalgam (2N):</strong> Explore Betaab Valley, Aru Valley, and the Lidder River.</li>
             <li><strong>Gulmarg (1N):</strong> Experience the world-famous Gondola Ride (Phase 1 included).</li>
-            <li><strong>Heritage:</strong> Visit Mughal Gardens (Nishat & Shalimar) and Martand Sun Temple ruins.</li>
+            <li><strong>Heritage:</strong> Visit Mughal Gardens (Nishat &amp; Shalimar) and Martand Sun Temple ruins.</li>
             <li><strong>Unique Experiences:</strong> Saffron cultivation demonstration at Pampore and a visit to a Cricket Bat Factory.</li>
         </ul>
     </div>
@@ -124,7 +305,7 @@
     <div id="itinerary" class="tab-panel">
         <h2>7 Days Detailed Itinerary</h2>
         <div class="itinerary-step">
-            <h4>Day 1: Arrival in Srinagar - Houseboat & Shikara</h4>
+            <h4>Day 1: Arrival in Srinagar - Houseboat &amp; Shikara</h4>
             <p>Arrive at Srinagar airport. Transfer to a traditional Houseboat on Dal Lake. Enjoy a romantic 1-hour Shikara ride during sunset. Overnight in Houseboat.</p>
         </div>
         <div class="itinerary-step">
@@ -140,7 +321,7 @@
             <p>Drive to Gulmarg. Enroute visit the ancient Martand Sun Temple and a Kashmiri Cricket Bat Factory. Evening at leisure in the meadows. Overnight in Gulmarg.</p>
         </div>
         <div class="itinerary-step">
-            <h4>Day 5: Gulmarg Gondola & Return to Srinagar</h4>
+            <h4>Day 5: Gulmarg Gondola &amp; Return to Srinagar</h4>
             <p>Experience the Gulmarg Gondola (Asia's highest cable car). Proceed to Phase 1 (Khilanmarg) for snow views. Afternoon drive back to Srinagar. Overnight in Srinagar Hotel.</p>
         </div>
         <div class="itinerary-step">
@@ -164,12 +345,12 @@
             </tr>
             <tr>
                 <td><strong>Standard / Value</strong></td>
-                <td>₹37,900*</td>
+                <td>Rs.37,900*</td>
                 <td>Houseboat + 3* Hotels, Daily Breakfast, Shared Transfers</td>
             </tr>
             <tr>
                 <td><strong>Premium / Luxury</strong></td>
-                <td>₹58,500*</td>
+                <td>Rs.58,500*</td>
                 <td>Premium Resorts, All Meals, Private Vehicle, Gondola Tickets</td>
             </tr>
         </table>
@@ -180,9 +361,9 @@
         <h2>Special Saffron Add-ons</h2>
         <div class="offer-box">
             <h3 style="color: var(--star-red);">Complimentary Experiences</h3>
-            <p>• Complimentary <strong>Kashmiri Kahwa</strong> welcome drink on the houseboat.</p>
-            <p>• <strong>Photography Session</strong> in traditional Kashmiri attire during the Shikara ride.</p>
-            <p>• Guaranteed <strong>Gondola Phase-1 Tickets</strong> (subject to weather/availability).</p>
+            <p>&bull; Complimentary <strong>Kashmiri Kahwa</strong> welcome drink on the houseboat.</p>
+            <p>&bull; <strong>Photography Session</strong> in traditional Kashmiri attire during the Shikara ride.</p>
+            <p>&bull; Guaranteed <strong>Gondola Phase-1 Tickets</strong> (subject to weather/availability).</p>
         </div>
         <div class="offer-box" style="background: #e1f5fe; border-color: #01579b;">
             <h3 style="color: var(--star-blue);">Loyalty Rewards</h3>
@@ -204,7 +385,7 @@
         }
         document.getElementById(sectionName).classList.add("active");
         evt.currentTarget.classList.add("active");
-        
+
         window.scrollTo({
             top: document.querySelector('.tab-menu').offsetTop - 20,
             behavior: 'smooth'

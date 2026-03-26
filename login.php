@@ -26,9 +26,10 @@ mysqli_stmt_execute($stmt);
 mysqli_stmt_bind_result($stmt, $name, $userEmail);
 
 if (mysqli_stmt_fetch($stmt)) {
-    $_SESSION['user'] = $userEmail;
+    $_SESSION['user'] = $email;
     $_SESSION['user_name'] = $name;
-    echo "<script>alert('Login successful'); window.location.href='myaccount.php';</script>";
+    header("Location: myaccount.php");
+    exit();
 } else {
     echo "<script>alert('Invalid email or password'); window.location.href='login.html';</script>";
 }

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Tour of Rajasthan | Saffron Tourism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --star-blue: #004a99;
+            --star-orange: #e67e22; /* A deeper Rajasthan Sand Orange */
+            --text-dark: #333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background: #fff; color: var(--text-dark); line-height: 1.6; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1920&q=80'); /* Representative Rajasthan Image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+        }
+
+        nav.top-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 25px 60px; position: absolute; width: 100%; z-index: 10;
+        }
+
+        .logo { 
+            display: flex; align-items: center; font-weight: 600; font-size: 26px;
+            color: #1c2733; background: rgba(255,255,255,0.9);
+            padding: 8px 20px; border-radius: 50px; backdrop-filter: blur(2px);
+        }
+        .logo img { height: 44px; margin-right: 12px; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-size: 14px; font-weight: 600; }
+
+        .hero-content { position: absolute; bottom: 15%; left: 60px; }
+        .hero-content h1 { font-size: 85px; line-height: 0.9; margin-bottom: 15px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero-content p { font-size: 28px; font-weight: 400; opacity: 0.9; }
+
+        /* --- TABBED CONTENT --- */
+        .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .tab-menu { 
+            display: flex; border-bottom: 2px solid #eee; margin-bottom: 40px; 
+            position: sticky; top: 0; background: white; z-index: 5;
+        }
+        .tab-link { 
+            padding: 20px 40px; border: none; background: none; font-weight: 700; 
+            cursor: pointer; color: #888; transition: 0.3s; font-size: 14px;
+        }
+        .tab-link.active { color: var(--star-blue); border-bottom: 4px solid var(--star-blue); }
+
+        .tab-panel { display: none; animation: fadeIn 0.4s ease; }
+        .tab-panel.active { display: block; }
+
+        h2 { font-size: 32px; color: var(--star-blue); margin-bottom: 25px; font-weight: 700; }
+        .price-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .price-table th, .price-table td { padding: 15px; border: 1px solid #ddd; text-align: left; }
+        .price-table th { background: #f8f8f8; color: var(--star-blue); }
+
+        .itinerary-step { margin-bottom: 30px; border-left: 3px solid var(--star-orange); padding-left: 20px; }
+        .itinerary-step h4 { color: var(--star-orange); margin-bottom: 5px; font-size: 18px; }
+
+        .offer-box { background: #fffcf0; border: 1px solid #ffeeba; padding: 30px; border-radius: 8px; margin-bottom: 20px; }
+        .highlight-badge { background: #fff3e0; color: #e67e22; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; display: inline-block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 48px; }
+            .tab-link { padding: 12px 15px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <nav class="top-nav">
+        <div class="logo">
+            <img src="Saffron_Logo.jpeg" alt="Saffron Logo">
+            SAFFRON TOURISM
+        </div>
+        <div class="nav-links">
+            <a href="#">My Account</a>
+            <a href="#">Basket</a>
+            <a href="#">Contact Us</a>
+            <a href="#" style="font-size: 22px;">☰</a>
+        </div>
+    </nav>
+
+    <div class="hero-content">
+        <h1>Cultural <br>Rajasthan</h1>
+        <p>07 Days / 06 Nights Tour</p>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="tab-menu">
+        <button class="tab-link active" onclick="openSection(event, 'overview')">TOUR OVERVIEW</button>
+        <button class="tab-link" onclick="event.preventDefault(); openSection(event, 'itinerary')">TOUR ITINERARY</button>
+        <button class="tab-link" onclick="openSection(event, 'prices')">DATES & PRICES</button>
+        <button class="tab-link" onclick="openSection(event, 'offers')">OFFERS</button>
+    </div>
+
+    <div id="overview" class="tab-panel active">
+        <h2>Cultural Tour Of Rajasthan</h2>
+        <p>Immerse yourself in the "Land of Maharajas" with our comprehensive 6 Night / 7 Day cultural odyssey. This package covers the famous "Pink City" of Jaipur, the "Blue City" of Jodhpur, and the "City of Lakes," Udaipur. Experience the architectural grandeur of forts, palaces, and heritage temples.</p>
+        <br>
+        <div class="highlight-badge">TOUR HIGHLIGHTS</div>
+        <ul style="margin-left: 20px;">
+            <li><strong>Jaipur (2N):</strong> Amer Fort, City Palace, and Jantar Mantar (UNESCO site).</li>
+            <li><strong>Jodhpur (2N):</strong> Massive Mehrangarh Fort and Jaswant Thada memorial.</li>
+            <li><strong>Udaipur (2N):</strong> Romantic City Palace complex and Saheliyon Ki Bari.</li>
+            <li><strong>Enroute Visits:</strong> Scenic drives across the Aravalli range.</li>
+            <li><strong>Stay:</strong> Handpicked heritage-style or modern comfortable hotels.</li>
+        </ul>
+    </div>
+
+    <div id="itinerary" class="tab-panel">
+        <h2>7 Days Itinerary</h2>
+        <div class="itinerary-step">
+            <h4>Day 1: Arrival in Jaipur</h4>
+            <p>Arrive in the "Pink City." Check into your hotel. Evening at leisure to explore the vibrant local bazaars like Johari and Bapu Bazar. Overnight in Jaipur.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 2: Jaipur Sightseeing</h4>
+            <p>Visit the Amer Fort (optional Elephant/Jeep ride). Later, explore the City Palace, Hawa Mahal (Photo stop), and the Jantar Mantar observatory.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 3: Jaipur to Jodhpur (325 Kms / 7 Hrs)</h4>
+            <p>Drive to Jodhpur, the "Blue City." Upon arrival, check-in. Evening free to explore the antique markets near the Clock Tower.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 4: Jodhpur Sightseeing</h4>
+            <p>Explore the Mehrangarh Fort, one of India's largest forts. Visit Jaswant Thada, the marble cenotaph often called the 'Taj Mahal of Marwar.'</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 5: Jodhpur to Udaipur (260 Kms / 6 Hrs)</h4>
+            <p>Drive to the romantic city of Udaipur. Check into your hotel. Enjoy an evening walk by the banks of Lake Pichola.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 6: Udaipur Local Sightseeing</h4>
+            <p>Visit the City Palace, Jagdish Temple, and Saheliyon Ki Bari (Garden of Maidens). Optional boat ride on Lake Pichola.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 7: Departure from Udaipur</h4>
+            <p>After breakfast, transfer to Udaipur Airport or Railway Station for your onward journey.</p>
+        </div>
+    </div>
+
+    <div id="prices" class="tab-panel">
+        <h2>Saffron Package Pricing</h2>
+        <p>Special SOTC-collaborated rates based on twin-sharing.</p>
+        <table class="price-table">
+            <tr>
+                <th>Package Type</th>
+                <th>Starting Price</th>
+                <th>Inclusions</th>
+            </tr>
+            <tr>
+                <td><strong>Value / Standard</strong></td>
+                <td>₹31,980*</td>
+                <td>Standard Hotels, Breakfast, AC Transfers</td>
+            </tr>
+            <tr>
+                <td><strong>Premium / Heritage</strong></td>
+                <td>₹45,500*</td>
+                <td>Heritage Properties, Breakfast & Dinner, Guided Tours</td>
+            </tr>
+        </table>
+        <p style="margin-top:10px; font-size: 13px;">*GST extra. Prices are indicative and subject to seasonal availability.</p>
+    </div>
+
+    <div id="offers" class="tab-panel">
+        <h2>Special Cultural Benefits</h2>
+        <div class="offer-box">
+            <h3 style="color: var(--star-orange);">Exclusive Perks</h3>
+            <p>• Complimentary <strong>Traditional Rajasthani Thali</strong> dinner in Jaipur.</p>
+            <p>• 10% Discount on <strong>Handicraft Shopping</strong> at authorized centers.</p>
+            <p>• Flexible cancellation policies for early bookings.</p>
+        </div>
+        <div class="offer-box" style="background: #e3f2fd; border-color: #2196f3;">
+            <h3 style="color: var(--star-blue);">Loyalty Rewards</h3>
+            <p>Earn <strong>+320 Holiday Reward Points</strong> on this booking for Silver tier members.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openSection(evt, sectionName) {
+        var i, tabContent, tabLinks;
+        tabContent = document.getElementsByClassName("tab-panel");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].classList.remove("active");
+        }
+        tabLinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].classList.remove("active");
+        }
+        document.getElementById(sectionName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+        
+        // Scroll to the top of the content area for better UX on mobile
+        window.scrollTo({
+            top: document.querySelector('.tab-menu').offsetTop - 20,
+            behavior: 'smooth'
+        });
+    }
+</script>
+
+</body>
+</html>

@@ -6,14 +6,13 @@
 
 <title>Kerala Delight | Saffron Tourism</title>
 
-<!-- SAME FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --star-green: #2e7d32;
-    --star-orange: #e67e22;
+    --star-blue: #005a9c;
+    --star-red: #c0392b;
     --text-dark: #333;
 }
 
@@ -23,20 +22,17 @@ body {
     font-family: 'Poppins', sans-serif;
     background: #c8c1b8;
     color: var(--text-dark);
-    line-height: 1.6;
 }
 
-/* ===== NEW HEADER (MATCHED) ===== */
+/* ===== HEADER ===== */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 18px 70px;
     background: #9fb2c3;
 }
@@ -57,54 +53,65 @@ body {
     font-size: 28px;
     font-weight: 700;
     color: #1c2733;
-    letter-spacing: -0.03em;
 }
 
 .navbar nav a {
     margin-left: 35px;
     text-decoration: none;
     color: #1c2733;
-    font-size: 15px;
     font-weight: 500;
 }
 
-/* Prevent overlap */
-.hero {
-    margin-top: 80px;
+.navbar nav a:hover {
+    color: var(--star-blue);
 }
 
-/* HERO (UNCHANGED) */
+/* FIX HERO OFFSET */
 .hero {
+    margin-top: 80px;
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-    url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1920&auto=format&fit=crop');
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    url('https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
     position: relative;
     color: white;
 }
 
-/* REMOVE OLD NAV STYLES (NOT USED ANYMORE) */
+/* HERO CONTENT */
+.hero-content {
+    position: absolute;
+    bottom: 15%;
+    left: 60px;
+}
 
-/* HERO CONTENT SAME */
-.hero-content { position: absolute; bottom: 15%; left: 60px; }
-.hero-content h1 { font-size: 85px; line-height: 0.9; margin-bottom: 15px; font-weight: 700; }
-.hero-content p { font-size: 28px; }
+.hero-content h1 {
+    font-size: 85px;
+}
+
+.hero-content p {
+    font-size: 28px;
+}
 
 .hero-book-btn {
     margin-top: 25px;
     padding: 14px 32px;
     border-radius: 50px;
-    background: linear-gradient(135deg, #ffffff, #edf9ef);
-    color: var(--star-green);
+    background: linear-gradient(135deg, #ffffff, #e6f2ff);
+    color: var(--star-blue);
     border: none;
     font-weight: 600;
     cursor: pointer;
 }
 
-/* REST SAME */
-.content-wrapper { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+/* CONTENT */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
 
+/* TABS */
 .tab-menu {
     display: flex;
     border-bottom: 2px solid #eee;
@@ -132,21 +139,21 @@ body {
 .tab-panel.active { display: block; }
 
 h2 {
-    font-size: 32px;
     color: var(--star-blue);
-    margin-bottom: 25px;
 }
 
+/* ITINERARY */
 .itinerary-step {
-    margin-bottom: 30px;
-    border-left: 3px solid var(--star-orange);
+    border-left: 3px solid var(--star-red);
     padding-left: 20px;
+    margin-bottom: 30px;
 }
 
 .itinerary-step h4 {
-    color: var(--star-orange);
+    color: var(--star-red);
 }
 
+/* TABLE */
 .price-table {
     width: 100%;
     border-collapse: collapse;
@@ -157,17 +164,23 @@ h2 {
     border: 1px solid #ddd;
 }
 
-.offer-box {
-    background: #f1f8e9;
-    padding: 30px;
-    border-radius: 8px;
+.price-table th {
+    background: #f8f8f8;
 }
 
+/* OFFER */
+.offer-box {
+    background: #fdf2f2;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* BADGE */
 .highlight-badge {
-    background: #e8f5e9;
+    background: #e1f5fe;
     padding: 5px 12px;
     border-radius: 4px;
-    font-size: 12px;
     font-weight: 700;
 }
 </style>
@@ -175,13 +188,12 @@ h2 {
 
 <body>
 
-<!-- NEW HEADER -->
+<!-- HEADER -->
 <header class="navbar">
     <div class="logo">
         <img src="Saffron_Logo.jpeg">
         <h2>Saffron Tourism</h2>
     </div>
-
     <nav>
         <a href="index.html">Home</a>
         <a href="myaccount.php">My Account</a>
@@ -192,32 +204,9 @@ h2 {
 <!-- HERO -->
 <div class="hero">
     <div class="hero-content">
-        <h1>Kerala</h1>
-        <p>06 Days Tour</p>
-        <button class="hero-book-btn" onclick="window.location.href='booking.html?place=Kerala'">
-            Book Now
-        </button>
-    </div>
-</div>
-
-
-<div class="hero">
-    <nav class="top-nav">
-        <div class="logo">
-            <img src="Saffron_Logo.jpeg" alt="Saffron Logo">
-            SAFFRON TOURISM
-        </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="myaccount.php">My Account</a>
-            <a href="Contact.html">Contact Us</a>
-        </div>
-    </nav>
-
-    <div class="hero-content">
         <h1>Kerala <br>Delight</h1>
         <p>06 Days / 05 Nights</p>
-        <button class="hero-book-btn" type="button" onclick="window.location.href='booking.html?place=Kerala'">
+        <button class="hero-book-btn" onclick="window.location.href='booking.html?place=Kerala'">
             Book Now
         </button>
     </div>

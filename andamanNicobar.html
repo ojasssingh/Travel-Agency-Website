@@ -1,245 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andaman Fully Loaded with Neil Stay | Saffron Tourism</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --star-blue: #004a99;
-            --star-orange: #f39200;
-            --text-dark: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Poppins', sans-serif; background: #fff; color: var(--text-dark); line-height: 1.6; }
+<title>Andaman Fully Loaded with Neil Stay | Saffron Tourism</title>
 
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            /* Using a direct Wikimedia link for maximum compatibility */
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://www.sushanttravels.com/blog/2019/11/1574417730.jpg'); 
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            color: white;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-        nav.top-nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 25px 60px; position: absolute; width: 100%; z-index: 10;
-        }
+<style>
+:root {
+    --star-blue: #004a99;
+    --star-orange: #f39200;
+    --text-dark: #333;
+}
 
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 26px;
-            color: #1c2733;
-            letter-spacing: 0.5px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            background: rgba(255,255,255,0.9);
-            padding: 8px 20px;
-            border-radius: 50px;
-            backdrop-filter: blur(2px);
-            transition: all 0.3s ease;
-        }
-        .logo img {
-            height: 44px;
-            width: auto;
-            margin-right: 12px;
-            vertical-align: middle;
-        }
-        .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-size: 14px; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .hero-content { position: absolute; bottom: 15%; left: 60px; }
-        .hero-content h1 { font-size: 85px; line-height: 0.9; margin-bottom: 15px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .hero-content p { font-size: 28px; font-weight: 400; opacity: 0.9; }
-        .hero-book-btn {
-            margin-top: 25px;
-            padding: 14px 32px;
-            border-radius: 50px;
-            background: linear-gradient(135deg, #ffffff, #e6f6ff);
-            color: var(--star-blue);
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
-        }
-        .hero-book-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #cde7e3 !important;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
 
-        /* --- TABBED CONTENT AREA --- */
-        .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-        
-        .tab-menu { 
-            display: flex; border-bottom: 2px solid #eee; margin-bottom: 40px; 
-            position: sticky; top: 0; background: white; z-index: 5;
-        }
-        .tab-link { 
-            padding: 20px 40px; border: none; background: none; font-weight: 700; 
-            cursor: pointer; color: #888; transition: 0.3s; font-size: 14px;
-        }
-        .tab-link.active { color: var(--star-blue); border-bottom: 4px solid var(--star-blue); }
+/* ================= PERFECT HEADER ================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 
-        .tab-panel { display: none; animation: fadeIn 0.4s ease; }
-        .tab-panel.active { display: block; }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        h2 { font-size: 32px; color: var(--star-blue); margin-bottom: 25px; font-weight: 700; }
-        
-        .price-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .price-table th, .price-table td { padding: 15px; border: 1px solid #ddd; text-align: left; }
-        .price-table th { background: #f8f8f8; color: var(--star-blue); }
+    padding: 18px 70px;
+    background: #9fb2c3; 
+}
 
-        .itinerary-step { margin-bottom: 30px; border-left: 3px solid var(--star-orange); padding-left: 20px; }
-        .itinerary-step h4 { color: var(--star-orange); margin-bottom: 5px; font-size: 18px; }
+/* LEFT SIDE (LOGO + TEXT) */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        .offer-box { background: #fffcf0; border: 1px solid #ffeeba; padding: 30px; border-radius: 8px; margin-bottom: 20px; }
-        .highlight-badge { background: #e7f3ff; color: var(--star-blue); padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; display: inline-block; }
+.logo img {
+    width: 70px;
+    border-radius: 10px;
+}
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+/* TEXT */
+.logo h2 {
+    font-family: 'Lora', serif;  
+    font-size: 28px;            
+    font-weight: 700;            
+    color: #1c2733;
+    letter-spacing: -0.03em;    
+    line-height: 1;
+    margin: 0;  
+}
 
-        @media (max-width: 768px) {
-            nav.top-nav { padding: 15px 20px; }
-            .logo { font-size: 18px; padding: 5px 14px; }
-            .logo img { height: 32px; }
-            .hero-content h1 { font-size: 48px; }
-            .hero-content p { font-size: 20px; }
-            .hero-content { left: 30px; bottom: 20%; }
-            .tab-link { padding: 12px 20px; font-size: 12px; }
-        }
-    </style>
+/* RIGHT SIDE LINKS */
+.navbar nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar nav a {
+    margin-left: 35px;
+    text-decoration: none;
+    color: #1c2733;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #004a99;
+}
+
+
+/* Prevent overlap */
+.hero {
+    margin-top: 80px;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+    url('https://www.sushanttravels.com/blog/2019/11/1574417730.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+}
+
+.hero-content {
+    position: absolute;
+    bottom: 15%;
+    left: 60px;
+}
+
+.hero-content h1 {
+    font-size: 85px;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 28px;
+}
+
+.hero-book-btn {
+    margin-top: 25px;
+    padding: 14px 32px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ffffff, #e6f6ff);
+    color: var(--star-blue);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* CONTENT */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* TABS */
+.tab-menu {
+    display: flex;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 40px;
+    position: sticky;
+    top: 0;
+    background: white;
+}
+
+.tab-link {
+    padding: 20px 40px;
+    border: none;
+    background: none;
+    font-weight: 700;
+    cursor: pointer;
+    color: #888;
+}
+
+.tab-link.active {
+    color: var(--star-blue);
+    border-bottom: 4px solid var(--star-blue);
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+h2 {
+    font-size: 32px;
+    color: var(--star-blue);
+    margin-bottom: 25px;
+}
+
+/* ITINERARY */
+.itinerary-step {
+    margin-bottom: 30px;
+    border-left: 3px solid var(--star-orange);
+    padding-left: 20px;
+}
+
+.itinerary-step h4 {
+    color: var(--star-orange);
+}
+
+/* TABLE */
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.price-table th, .price-table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+.price-table th {
+    background: #f8f8f8;
+}
+
+/* OFFER */
+.offer-box {
+    background: #fffcf0;
+    border: 1px solid #ffeeba;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.highlight-badge {
+    background: #e7f3ff;
+    color: var(--star-blue);
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 48px; }
+    .hero-content p { font-size: 20px; }
+}
+</style>
 </head>
+
 <body>
 
 <div class="hero">
-    <nav class="top-nav">
-        <div class="logo">
-            <img src="Saffron_Logo.jpeg" alt="Saffron Logo">
-            SAFFRON TOURISM
-        </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="myaccount.php">My Account</a>
-            <a href="Contact.html">Contact Us</a>
-        </div>
-    </nav>
 
-    <div class="hero-content">
-        <h1>Andaman & <br>Nicobar</h1>
-        <p>06 Days Tour</p>
-        <button class="hero-book-btn" type="button" onclick="window.location.href='booking.html?place=Andaman'">
-            Book Now
-        </button>
+<header class="navbar">
+    <div class="logo">
+        <img src="Saffron_Logo.jpeg" class="logo-img">
+        <h2>Saffron Tourism</h2>
     </div>
+
+    <nav>
+        <a href="myaccount.php">My Account</a>
+        <a href="register.html">Register</a>
+        <a href="Contact.html">Contact Us</a>
+    </nav>
+</header>
+
+<div class="hero-content">
+    <h1>Andaman & <br>Nicobar</h1>
+    <p>06 Days Tour</p>
+    <button class="hero-book-btn" onclick="window.location.href='booking.html?place=Andaman'">
+        Book Now
+    </button>
+</div>
+
 </div>
 
 <div class="content-wrapper">
-    <div class="tab-menu">
-        <button class="tab-link active" onclick="openSection(event, 'overview')">TOUR OVERVIEW</button>
-        <button class="tab-link" onclick="openSection(event, 'itinerary')">TOUR ITINERARY</button>
-        <button class="tab-link" onclick="openSection(event, 'prices')">DATES & PRICES</button>
-        <button class="tab-link" onclick="openSection(event, 'offers')">OFFERS</button>
-    </div>
 
-    <div id="overview" class="tab-panel active">
-        <h2>Andaman Fully Loaded With Neil Stay</h2>
-        <p>Experience the ultimate Andaman getaway with this all-inclusive 5 Night / 6 Day "Fully Loaded" package. This tour is curated to include all the "must-see" sightseeing spots including Port Blair, Havelock Island (Swaraj Dweep), and Neil Island (Shaheed Dweep).</p>
-        <br>
-        <div class="highlight-badge">TOUR HIGHLIGHTS</div>
-        <ul style="margin-left: 20px;">
-            <li><strong>Port Blair (2N):</strong> Guided tour of Cellular Jail with Sound & Light show.</li>
-            <li><strong>Havelock Island (2N):</strong> Radhanagar Beach Sunset with Family Photo Session.</li>
-            <li><strong>Neil Island (1N):</strong> Visit Bharatpur, Laxmanpur Beach & Natural Howrah Bridge.</li>
-            <li><strong>Adventure:</strong> Self-Drive Sea Kart session at Corbyn's Cove Beach.</li>
-            <li><strong>Transfers:</strong> Inter-island travel via Makruzz/Coastal Cruise/Green Ocean.</li>
-        </ul>
-    </div>
+<div class="tab-menu">
+    <button class="tab-link active" onclick="openSection(event, 'overview')">TOUR OVERVIEW</button>
+    <button class="tab-link" onclick="openSection(event, 'itinerary')">TOUR ITINERARY</button>
+    <button class="tab-link" onclick="openSection(event, 'prices')">DATES & PRICES</button>
+    <button class="tab-link" onclick="openSection(event, 'offers')">OFFERS</button>
+</div>
 
-    <div id="itinerary" class="tab-panel">
-        <h2>6 Days Itinerary</h2>
-        <div class="itinerary-step">
-            <h4>Day 1: Arrival in Port Blair - Cellular Jail & Light Show</h4>
-            <p>Arrive at Port Blair. Visit the Historic Cellular Jail followed by the evening Light & Sound show. Overnight at Port Blair.</p>
-        </div>
-        <div class="itinerary-step">
-            <h4>Day 2: Port Blair to Havelock Island</h4>
-            <p>Travel by luxury cruise to Havelock. Visit Radhanagar Beach (Asia's #1 beach) for a stunning sunset and a complimentary family photo session.</p>
-        </div>
-        <div class="itinerary-step">
-            <h4>Day 3: Elephant Beach Excursion</h4>
-            <p>Enjoy a boat ride to Elephant Beach. Indulge in snorkeling or just relax on the pristine white sands. Overnight at Havelock.</p>
-        </div>
-        <div class="itinerary-step">
-            <h4>Day 4: Havelock to Neil Island</h4>
-            <p>Cruise to Neil Island. Visit Bharatpur Beach and the Natural Bridge (subject to tide conditions). Overnight at Neil Island.</p>
-        </div>
-        <div class="itinerary-step">
-            <h4>Day 5: Neil Island to Port Blair</h4>
-            <p>Visit Laxmanpur Beach. Return to Port Blair via cruise. Evening free for shopping at local markets.</p>
-        </div>
-        <div class="itinerary-step">
-            <h4>Day 6: Departure from Port Blair</h4>
-            <p>After breakfast, transfer to Veer Savarkar Airport for your return flight home.</p>
-        </div>
-    </div>
+<!-- OVERVIEW -->
+<div id="overview" class="tab-panel active">
+<h2>Andaman Fully Loaded With Neil Stay</h2>
+<p>Experience the ultimate Andaman getaway with this all-inclusive 5 Night / 6 Day "Fully Loaded" package. This tour is curated to include all the "must-see" sightseeing spots including Port Blair, Havelock Island (Swaraj Dweep), and Neil Island (Shaheed Dweep).</p>
 
-    <div id="prices" class="tab-panel">
-        <h2>Saffron Package Pricing</h2>
-        <table class="price-table">
-            <tr>
-                <th>Package Type</th>
-                <th>Starting Price</th>
-                <th>Inclusions</th>
-            </tr>
-            <tr>
-                <td><strong>Standard / Value</strong></td>
-                <td>₹49,990*</td>
-                <td>Hotels, Breakfast, Sightseeing, Transfers</td>
-            </tr>
-            <tr>
-                <td><strong>Premium / Luxury</strong></td>
-                <td>₹57,999*</td>
-                <td>4* Hotels, All Meals, All Activities</td>
-            </tr>
-        </table>
-        <p style="margin-top:10px; font-size: 13px;">*Prices are per adult on twin-sharing basis. Flight costs extra unless specified.</p>
-    </div>
+<br>
 
-    <div id="offers" class="tab-panel">
-        <h2>Special Saffron Benefits</h2>
-        <div class="offer-box">
-            <h3 style="color: var(--star-orange);">Complimentary Experiences</h3>
-            <p>• Thrilling <strong>Self-Drive Sea Kart</strong> session at Corbyn's Cove Beach.</p>
-            <p>• Professional <strong>Family Photo Session</strong> at Radhanagar Beach.</p>
-            <p>• Complimentary Dinner Cruise in Port Blair (Select dates).</p>
-        </div>
-        <div class="offer-box" style="background: #e7f3ff; border-color: #b8daff;">
-            <h3 style="color: var(--star-blue);">Loyalty Rewards</h3>
-            <p>Earn up to <strong>+500 Holiday Reward Points</strong> on this booking for Silver tier members.</p>
-        </div>
-    </div>
+<div class="highlight-badge">TOUR HIGHLIGHTS</div>
+
+<ul style="margin-left: 20px;">
+<li><strong>Port Blair (2N):</strong> Guided tour of Cellular Jail with Sound & Light show.</li>
+<li><strong>Havelock Island (2N):</strong> Radhanagar Beach Sunset with Family Photo Session.</li>
+<li><strong>Neil Island (1N):</strong> Visit Bharatpur, Laxmanpur Beach & Natural Howrah Bridge.</li>
+<li><strong>Adventure:</strong> Self-Drive Sea Kart session at Corbyn's Cove Beach.</li>
+<li><strong>Transfers:</strong> Inter-island travel via Makruzz/Coastal Cruise/Green Ocean.</li>
+</ul>
+</div>
+
+<!-- ITINERARY -->
+<div id="itinerary" class="tab-panel">
+<h2>6 Days Itinerary</h2>
+
+<div class="itinerary-step">
+<h4>Day 1: Arrival in Port Blair - Cellular Jail & Light Show</h4>
+<p>Arrive at Port Blair. Visit the Historic Cellular Jail followed by the evening Light & Sound show. Overnight at Port Blair.</p>
+</div>
+
+<div class="itinerary-step">
+<h4>Day 2: Port Blair to Havelock Island</h4>
+<p>Travel by luxury cruise to Havelock. Visit Radhanagar Beach (Asia's #1 beach) for a stunning sunset and a complimentary family photo session.</p>
+</div>
+
+<div class="itinerary-step">
+<h4>Day 3: Elephant Beach Excursion</h4>
+<p>Enjoy a boat ride to Elephant Beach. Indulge in snorkeling or just relax on the pristine white sands. Overnight at Havelock.</p>
+</div>
+
+<div class="itinerary-step">
+<h4>Day 4: Havelock to Neil Island</h4>
+<p>Cruise to Neil Island. Visit Bharatpur Beach and the Natural Bridge (subject to tide conditions). Overnight at Neil Island.</p>
+</div>
+
+<div class="itinerary-step">
+<h4>Day 5: Neil Island to Port Blair</h4>
+<p>Visit Laxmanpur Beach. Return to Port Blair via cruise. Evening free for shopping at local markets.</p>
+</div>
+
+<div class="itinerary-step">
+<h4>Day 6: Departure from Port Blair</h4>
+<p>After breakfast, transfer to Veer Savarkar Airport for your return flight home.</p>
+</div>
+
+</div>
+
+<!-- PRICES -->
+<div id="prices" class="tab-panel">
+<h2>Saffron Package Pricing</h2>
+<table class="price-table">
+<tr>
+<th>Package Type</th>
+<th>Starting Price</th>
+<th>Inclusions</th>
+</tr>
+
+<tr>
+<td><strong>Standard / Value</strong></td>
+<td>₹49,990*</td>
+<td>Hotels, Breakfast, Sightseeing, Transfers</td>
+</tr>
+
+<tr>
+<td><strong>Premium / Luxury</strong></td>
+<td>₹57,999*</td>
+<td>4* Hotels, All Meals, All Activities</td>
+</tr>
+</table>
+
+<p style="margin-top:10px; font-size: 13px;">
+*Prices are per adult on twin-sharing basis. Flight costs extra unless specified.
+</p>
+</div>
+
+<!-- OFFERS -->
+<div id="offers" class="tab-panel">
+<h2>Special Saffron Benefits</h2>
+
+<div class="offer-box">
+<h3 style="color: var(--star-orange);">Complimentary Experiences</h3>
+<p>• Thrilling <strong>Self-Drive Sea Kart</strong> session at Corbyn's Cove Beach.</p>
+<p>• Professional <strong>Family Photo Session</strong> at Radhanagar Beach.</p>
+<p>• Complimentary Dinner Cruise in Port Blair (Select dates).</p>
+</div>
+
+<div class="offer-box" style="background: #e7f3ff; border-color: #b8daff;">
+<h3 style="color: var(--star-blue);">Loyalty Rewards</h3>
+<p>Earn up to <strong>+500 Holiday Reward Points</strong> on this booking.</p>
+</div>
+
+</div>
+
 </div>
 
 <script>
-    function openSection(evt, sectionName) {
-        var i, tabContent, tabLinks;
-        tabContent = document.getElementsByClassName("tab-panel");
-        for (i = 0; i < tabContent.length; i++) {
-            tabContent[i].classList.remove("active");
-        }
-        tabLinks = document.getElementsByClassName("tab-link");
-        for (i = 0; i < tabLinks.length; i++) {
-            tabLinks[i].classList.remove("active");
-        }
-        document.getElementById(sectionName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
+function openSection(evt, sectionName) {
+    let panels = document.querySelectorAll(".tab-panel");
+    let links = document.querySelectorAll(".tab-link");
+
+    panels.forEach(p => p.classList.remove("active"));
+    links.forEach(l => l.classList.remove("active"));
+
+    document.getElementById(sectionName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}
 </script>
 
 </body>

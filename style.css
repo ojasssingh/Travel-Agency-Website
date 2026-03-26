@@ -15,47 +15,23 @@ body {
     color: #222;
 }
 
-/* LOGO FONT */
-.logo h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 26px;
-    color: #1c2733;
-    letter-spacing: 0.5px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-/* HEADINGS */
-.hero h1,
-.hero h2,
-.popular h2,
-.about h2,
-.footer-left h3,
-.footer-links h4 {
-    font-family: 'Playfair Display', serif;
-}
-
-/* NAVBAR */
+/* ================= PERFECT HEADER ================= */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 8%;
-    background: #7f8fa3; /* bluish grey */
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
-}
 
-/* LOGO */
-.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 8%;
-    background: #8fa1b3;
+
+    padding: 18px 70px;
+    background: #9fb2c3; 
 }
 
+/* LEFT SIDE (LOGO + TEXT) */
 .logo {
     display: flex;
     align-items: center;
@@ -67,20 +43,40 @@ body {
     border-radius: 10px;
 }
 
+/* TEXT */
 .logo h2 {
-    font-family: 'Playfair Display', serif;
-    color: #1f2d3a;
+    font-family: 'Lora', serif;  
+    font-size: 28px;            
+    font-weight: 700;            
+    color: #1c2733;
+    letter-spacing: -0.03em;    
+    line-height: 1;
+    margin: 0;  
 }
 
-nav a {
-    margin: 0 15px;
+/* RIGHT SIDE LINKS */
+.navbar nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar nav a {
+    margin-left: 35px;
     text-decoration: none;
-    color: #1f2d3a;
+    color: #1c2733;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
 }
 
-/* REMOVE THIS COMPLETELY */
-.menu-icon {
-    display: none;
+.navbar nav a:hover {
+    color: #004a99;
+}
+
+
+/* Prevent overlap */
+.hero {
+    margin-top: 80px;
 }
 
 /* HERO */

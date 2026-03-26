@@ -3,7 +3,7 @@ session_start();
 
 if (!isset($_SESSION['user'])) {
     header("Location: login.html");
-    exit;
+    exit();
 }
 
 $conn = mysqli_connect("localhost", "root", "", "tourism", 3307);
@@ -79,6 +79,7 @@ mysqli_close($conn);
 
             <div class="account-actions">
                 <a href="booking.html" class="auth-btn secondary-btn">Book a Tour</a>
+                <a href="edit_profile.php" class="auth-btn secondary-btn">Edit Profile</a>
                 <a href="logout.php" class="logout-btn">Logout</a>
             </div>
 

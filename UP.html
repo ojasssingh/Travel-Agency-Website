@@ -44,6 +44,21 @@
         .hero-content { position: absolute; bottom: 15%; left: 60px; }
         .hero-content h1 { font-size: 85px; line-height: 0.9; margin-bottom: 15px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
         .hero-content p { font-size: 28px; font-weight: 400; opacity: 0.9; }
+        .hero-book-btn {
+            margin-top: 25px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ffffff, #fff2df);
+            color: var(--star-maroon);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .hero-book-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
 
         /* --- TABBED CONTENT AREA --- */
         .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
@@ -95,16 +110,18 @@
             SAFFRON TOURISM
         </div>
         <div class="nav-links">
-            <a href="#">My Account</a>
-            <a href="#">Basket</a>
-            <a href="#">Contact Us</a>
-            <a href="#" style="font-size: 22px;">☰</a>
+            <a href="index.html">Home</a>
+            <a href="myaccount.php">My Account</a>
+            <a href="Contact.html">Contact Us</a>
         </div>
     </nav>
 
     <div class="hero-content">
         <h1>Heritage of <br>Uttar Pradesh</h1>
         <p>05 Days Spiritual Circuit</p>
+        <button class="hero-book-btn" type="button" onclick="window.location.href='booking.html?place=Uttar%20Pradesh'">
+            Book Now
+        </button>
     </div>
 </div>
 
@@ -203,5 +220,6 @@
 </script>
 
 </body>
->>>>>>> f7aa43b (Add new tour pages for Kashmir, Kerala, and Rajasthan with detailed itineraries, pricing, and special offers)
+
+</html>
 </html>

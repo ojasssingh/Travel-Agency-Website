@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage of Uttar Pradesh | Saffron Tourism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --star-saffron: #ff9933; 
+            --star-maroon: #800000;  
+            --text-dark: #333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background: #fff; color: var(--text-dark); line-height: 1.6; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            /* RELIABLE IMAGE: Evening at the Ghats of Uttar Pradesh */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://resources.sotc.in/images/holidays/PKG011027/photos/Varanasi2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+        }
+
+        nav.top-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 25px 60px; position: absolute; width: 100%; z-index: 10;
+        }
+
+        .logo { 
+            display: flex; align-items: center; font-family: 'Poppins', sans-serif;
+            font-weight: 600; font-size: 26px; color: #1c2733;
+            background: rgba(255,255,255,0.9); padding: 8px 20px;
+            border-radius: 50px; backdrop-filter: blur(2px);
+        }
+        .logo img { height: 44px; width: auto; margin-right: 12px; vertical-align: middle; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-size: 14px; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+
+        .hero-content { position: absolute; bottom: 15%; left: 60px; }
+        .hero-content h1 { font-size: 85px; line-height: 0.9; margin-bottom: 15px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero-content p { font-size: 28px; font-weight: 400; opacity: 0.9; }
+
+        /* --- TABBED CONTENT AREA --- */
+        .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        
+        .tab-menu { 
+            display: flex; border-bottom: 2px solid #eee; margin-bottom: 40px; 
+            position: sticky; top: 0; background: white; z-index: 5;
+        }
+        .tab-link { 
+            padding: 20px 40px; border: none; background: none; font-weight: 700; 
+            cursor: pointer; color: #888; transition: 0.3s; font-size: 14px;
+        }
+        .tab-link.active { color: var(--star-saffron); border-bottom: 4px solid var(--star-saffron); }
+
+        .tab-panel { display: none; animation: fadeIn 0.4s ease; }
+        .tab-panel.active { display: block; }
+
+        h2 { font-size: 32px; color: var(--star-maroon); margin-bottom: 25px; font-weight: 700; }
+        
+        .price-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .price-table th, .price-table td { padding: 15px; border: 1px solid #ddd; text-align: left; }
+        .price-table th { background: #fff5e6; color: var(--star-maroon); }
+
+        .itinerary-step { margin-bottom: 30px; border-left: 3px solid var(--star-saffron); padding-left: 20px; }
+        .itinerary-step h4 { color: var(--star-saffron); margin-bottom: 5px; font-size: 18px; }
+
+        .offer-box { background: #fff9f0; border: 1px solid #ffe0b3; padding: 30px; border-radius: 8px; margin-bottom: 20px; }
+        .highlight-badge { background: #fff3e0; color: #e65100; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; display: inline-block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            nav.top-nav { padding: 15px 20px; }
+            .logo { font-size: 18px; padding: 5px 14px; }
+            .logo img { height: 32px; }
+            .hero-content h1 { font-size: 44px; }
+            .hero-content p { font-size: 18px; }
+            .hero-content { left: 30px; bottom: 20%; }
+            .tab-link { padding: 12px 10px; font-size: 11px; flex: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <nav class="top-nav">
+        <div class="logo">
+            <img src="saf.jpeg" alt="Saffron Logo">
+            SAFFRON TOURISM
+        </div>
+        <div class="nav-links">
+            <a href="#">My Account</a>
+            <a href="#">Basket</a>
+            <a href="#">Contact Us</a>
+            <a href="#" style="font-size: 22px;">☰</a>
+        </div>
+    </nav>
+
+    <div class="hero-content">
+        <h1>Heritage of <br>Uttar Pradesh</h1>
+        <p>05 Days Spiritual Circuit</p>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="tab-menu">
+        <button class="tab-link active" onclick="openSection(event, 'overview')">TOUR OVERVIEW</button>
+        <button class="tab-link" onclick="openSection(event, 'itinerary')">TOUR ITINERARY</button>
+        <button class="tab-link" onclick="openSection(event, 'prices')">DATES & PRICES</button>
+        <button class="tab-link" onclick="openSection(event, 'offers')">OFFERS</button>
+    </div>
+
+    <div id="overview" class="tab-panel active">
+        <h2>The Sacred Heart of India</h2>
+        <p>Experience the "Anant Kashi Ayodhya Yatra with Prayagraj." This journey connects the three most sacred points in Uttar Pradesh. From the liberation of Kashi and the royalty of Ayodhya to the holy confluence of three rivers at Prayagraj, this is the ultimate spiritual pilgrimage.</p>
+        <br>
+        <div class="highlight-badge">TOUR HIGHLIGHTS</div>
+        <ul style="margin-left: 20px;">
+            <li><strong>Varanasi:</strong> Kashi Vishwanath Darshan and Evening Ganga Aarti.</li>
+            <li><strong>Prayagraj:</strong> Holy dip at Triveni Sangam (Confluence of Ganga, Yamuna & Saraswati).</li>
+            <li><strong>Ayodhya:</strong> Visit the historic Shri Ram Janmabhoomi Temple and Hanumangarhi.</li>
+            <li><strong>Sarnath:</strong> Excursion to the place where Lord Buddha gave his first sermon.</li>
+            <li><strong>Inclusions:</strong> AC Transfers, Premium Stays, and Guided Darshans.</li>
+        </ul>
+    </div>
+
+    <div id="itinerary" class="tab-panel">
+        <h2>5 Days Sacred Itinerary</h2>
+        <div class="itinerary-step">
+            <h4>Day 1: Arrival in Varanasi & Ganga Aarti</h4>
+            <p>Arrive at Varanasi. Evening witness the spiritual Ganga Aarti. Overnight in Varanasi.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 2: Varanasi - Prayagraj - Varanasi</h4>
+            <p>Early morning drive to **Prayagraj**. Take a holy dip at the **Triveni Sangam**. Visit Anand Bhawan and Hanuman Temple. Return to Varanasi for overnight stay.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 3: Varanasi to Ayodhya</h4>
+            <p>Visit Kashi Vishwanath Temple and Sarnath. Afternoon drive to the holy city of Ayodhya. Overnight in Ayodhya.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 4: Full Day Ayodhya Darshan</h4>
+            <p>Full day visit to Shri Ram Janmabhoomi, Kanak Bhawan, and Hanumangarhi. Evening Sarayu River visit. Overnight in Ayodhya.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 5: Departure via Lucknow</h4>
+            <p>After breakfast, check out and drive to Lucknow airport for your return flight home.</p>
+        </div>
+    </div>
+
+    <div id="prices" class="tab-panel">
+        <h2>Yatra Pricing Details</h2>
+        <table class="price-table">
+            <tr>
+                <th>Package Type</th>
+                <th>Starting Price</th>
+                <th>Accommodations</th>
+            </tr>
+            <tr>
+                <td><strong>Comfort Class</strong></td>
+                <td>₹24,500*</td>
+                <td>3* Deluxe Hotels, AC Transfers, All Meals</td>
+            </tr>
+            <tr>
+                <td><strong>Divine Luxury</strong></td>
+                <td>₹32,900*</td>
+                <td>Premium Heritage Properties, Private Guide, VIP Darshan</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="offers" class="tab-panel">
+        <h2>Special Saffron Benefits</h2>
+        <div class="offer-box">
+            <h3 style="color: var(--star-maroon);">Exclusive Inclusions</h3>
+            <p>• Complimentary <strong>Triveni Sangam Boat Ride</strong> in Prayagraj.</p>
+            <p>• <strong>VIP Entry</strong> assistance for Kashi Vishwanath Darshan.</p>
+            <p>• Traditional Prasad box from Ayodhya for every family.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openSection(evt, sectionName) {
+        var i, tabContent, tabLinks;
+        tabContent = document.getElementsByClassName("tab-panel");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].classList.remove("active");
+        }
+        tabLinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].classList.remove("active");
+        }
+        document.getElementById(sectionName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>

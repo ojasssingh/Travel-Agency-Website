@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala Delight | Saffron Tourism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --star-green: #2e7d32; /* Lush Kerala Green */
+            --star-orange: #e67e22; /* Warm sunset/spice orange */
+            --text-dark: #333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background: #fff; color: var(--text-dark); line-height: 1.6; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            /* IMAGE: Beautiful Kerala Backwaters with Houseboat */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1920&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+        }
+
+        nav.top-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 25px 60px; position: absolute; width: 100%; z-index: 10;
+        }
+
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 26px;
+            color: #1c2733;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.9);
+            padding: 8px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(2px);
+            transition: all 0.3s ease;
+        }
+        .logo img {
+            height: 44px;
+            width: auto;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+        .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-size: 14px; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+
+        .hero-content { position: absolute; bottom: 15%; left: 60px; }
+        .hero-content h1 { font-size: 85px; line-height: 0.9; margin-bottom: 15px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero-content p { font-size: 28px; font-weight: 400; opacity: 0.9; }
+
+        /* --- TABBED CONTENT AREA --- */
+        .content-wrapper { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        
+        .tab-menu { 
+            display: flex; border-bottom: 2px solid #eee; margin-bottom: 40px; 
+            position: sticky; top: 0; background: white; z-index: 5;
+        }
+        .tab-link { 
+            padding: 20px 40px; border: none; background: none; font-weight: 700; 
+            cursor: pointer; color: #888; transition: 0.3s; font-size: 14px;
+        }
+        .tab-link.active { color: var(--star-green); border-bottom: 4px solid var(--star-green); }
+
+        .tab-panel { display: none; animation: fadeIn 0.4s ease; }
+        .tab-panel.active { display: block; }
+
+        h2 { font-size: 32px; color: var(--star-green); margin-bottom: 25px; font-weight: 700; }
+        
+        .price-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .price-table th, .price-table td { padding: 15px; border: 1px solid #ddd; text-align: left; }
+        .price-table th { background: #f8f8f8; color: var(--star-green); }
+
+        .itinerary-step { margin-bottom: 30px; border-left: 3px solid var(--star-orange); padding-left: 20px; }
+        .itinerary-step h4 { color: var(--star-orange); margin-bottom: 5px; font-size: 18px; }
+
+        .offer-box { background: #f1f8e9; border: 1px solid #c5e1a5; padding: 30px; border-radius: 8px; margin-bottom: 20px; }
+        .highlight-badge { background: #e8f5e9; color: var(--star-green); padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; display: inline-block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            nav.top-nav { padding: 15px 20px; }
+            .logo { font-size: 18px; padding: 5px 14px; }
+            .logo img { height: 32px; }
+            .hero-content h1 { font-size: 48px; }
+            .hero-content p { font-size: 20px; }
+            .hero-content { left: 30px; bottom: 20%; }
+            .tab-link { padding: 12px 20px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <nav class="top-nav">
+        <div class="logo">
+            <img src="saf.jpeg" alt="Saffron Logo">
+            SAFFRON TOURISM
+        </div>
+        <div class="nav-links">
+            <a href="#">My Account</a>
+            <a href="#">Basket</a>
+            <a href="#">Contact Us</a>
+            <a href="#" style="font-size: 22px;">☰</a>
+        </div>
+    </nav>
+
+    <div class="hero-content">
+        <h1>Kerala <br>Delight</h1>
+        <p>06 Days / 05 Nights</p>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="tab-menu">
+        <button class="tab-link active" onclick="openSection(event, 'overview')">TOUR OVERVIEW</button>
+        <button class="tab-link" onclick="openSection(event, 'itinerary')">TOUR ITINERARY</button>
+        <button class="tab-link" onclick="openSection(event, 'prices')">DATES & PRICES</button>
+        <button class="tab-link" onclick="openSection(event, 'offers')">OFFERS</button>
+    </div>
+
+    <div id="overview" class="tab-panel active">
+        <h2>Experience God’s Own Country</h2>
+        <p>Explore the best of Kerala with our "Kerala Delight" package. This tour takes you from the colonial charm of Kochi to the mist-covered tea gardens of Munnar, the spice-scented air of Thekkady, and the tranquil backwaters of Alleppey.</p>
+        <br>
+        <div class="highlight-badge">TOUR HIGHLIGHTS</div>
+        <ul style="margin-left: 20px;">
+            <li><strong>Kochi:</strong> Experience India's first Water Metro ride and visit Fort Kochi.</li>
+            <li><strong>Munnar (2N):</strong> Visit Eravikulam National Park and lush Tea Estates.</li>
+            <li><strong>Thekkady (1N):</strong> Spice plantation tour, Elephant ride, and Kalaripayattu show.</li>
+            <li><strong>Alleppey (1N):</strong> Serene boat ride on the world-famous backwaters.</li>
+            <li><strong>Cultural Bliss:</strong> Authentic Kerala Sadya lunch included enroute.</li>
+        </ul>
+    </div>
+
+    <div id="itinerary" class="tab-panel">
+        <h2>6 Days Itinerary</h2>
+        <div class="itinerary-step">
+            <h4>Day 1: Arrival in Kochi</h4>
+            <p>Arrival at Kochi airport. Transfer to hotel, check-in, and relax. Explore local markets for souvenirs in the evening.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 2: Kochi Sightseeing to Munnar</h4>
+            <p>Visit Mattancherry Palace, Jewish Synagogue, and Chinese Fishing Nets. Experience the Water Metro. Drive to Munnar via Cheeyappara Waterfalls.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 3: Munnar Full Day Tour</h4>
+            <p>Explore Eravikulam National Park (home to Nilgiri Tahr), Mattupetty Dam, Echo Point, and the Tea Museum.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 4: Munnar to Thekkady</h4>
+            <p>Drive to Thekkady. Visit a Spice Plantation, enjoy an Elephant ride, and witness the Kalaripayattu Martial Art show.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 5: Thekkady to Alleppey</h4>
+            <p>Drive to Alleppey, the "Venice of the East." Enjoy a relaxing boat ride through the backwater canals. Overnight at Alleppey.</p>
+        </div>
+        <div class="itinerary-step">
+            <h4>Day 6: Departure from Kochi</h4>
+            <p>After breakfast, transfer back to Kochi Airport for your onward journey with beautiful memories.</p>
+        </div>
+    </div>
+
+    <div id="prices" class="tab-panel">
+        <h2>Kerala Package Pricing</h2>
+        <table class="price-table">
+            <tr>
+                <th>Package Type</th>
+                <th>Starting Price</th>
+                <th>Inclusions</th>
+            </tr>
+            <tr>
+                <td><strong>Value Group Tour</strong></td>
+                <td>₹28,990*</td>
+                <td>Standard Hotels, Breakfast & Dinner, Transfers</td>
+            </tr>
+            <tr>
+                <td><strong>Premium Experience</strong></td>
+                <td>₹34,900*</td>
+                <td>4* Hotels, All Meals, Private Sightseeing</td>
+            </tr>
+        </table>
+        <p style="margin-top:10px; font-size: 13px;">*Prices are per adult on twin-sharing basis. Houseboat stay upgrades available on request.</p>
+    </div>
+
+    <div id="offers" class="tab-panel">
+        <h2>Special Saffron Benefits</h2>
+        <div class="offer-box">
+            <h3 style="color: var(--star-green);">Exclusive Kerala Perks</h3>
+            <p>• Complimentary <strong>Traditional Kerala Sadya</strong> (Banana Leaf Lunch).</p>
+            <p>• Free <strong>Elephant Ride</strong> voucher at Elephant Junction, Thekkady.</p>
+            <p>• Professional <strong>Tea Tasting Session</strong> in Munnar.</p>
+        </div>
+        <div class="offer-box" style="background: #e1f5fe; border-color: #b3e5fc;">
+            <h3 style="color: #0288d1;">Loyalty Rewards</h3>
+            <p>Earn up to <strong>+350 Holiday Reward Points</strong> on this booking for Silver tier members.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openSection(evt, sectionName) {
+        var i, tabContent, tabLinks;
+        tabContent = document.getElementsByClassName("tab-panel");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].classList.remove("active");
+        }
+        tabLinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].classList.remove("active");
+        }
+        document.getElementById(sectionName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+</body>
+</html>

@@ -92,6 +92,7 @@ mysqli_close($conn);
                             <p><strong>Destination:</strong> <?php echo htmlspecialchars($booking['destination'], ENT_QUOTES, 'UTF-8'); ?></p>
                             <p><strong>Start:</strong> <?php echo htmlspecialchars($booking['travel_date'], ENT_QUOTES, 'UTF-8'); ?></p>
                             <p><strong>End:</strong> <?php echo htmlspecialchars($booking['end_date'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p><strong>Status:</strong> <?php echo htmlspecialchars($booking['status'], ENT_QUOTES, 'UTF-8'); ?></p>
                             <p><strong>Days:</strong> <?php echo htmlspecialchars((string)$booking['days'], ENT_QUOTES, 'UTF-8'); ?></p>
                             <p><strong>People:</strong> <?php echo htmlspecialchars((string)$booking['people'], ENT_QUOTES, 'UTF-8'); ?></p>
                             <p><strong>Hotel:</strong> <?php echo htmlspecialchars($booking['hotel_type'], ENT_QUOTES, 'UTF-8'); ?></p>

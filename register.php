@@ -22,9 +22,16 @@ $city = $_POST['city'] ?? '';
 $state = $_POST['state'] ?? '';
 
 $name = trim($name);
+$phone = trim($phone);
 
 if ($name === '' || !preg_match('/^[A-Za-z ]+$/', $name)) {
     echo "<script>alert('Full name should contain only letters and spaces'); window.location.href='register.html';</script>";
+    mysqli_close($conn);
+    exit;
+}
+
+if (!preg_match('/^[0-9]{10}$/', $phone)) {
+    echo "<script>alert('Phone number should contain exactly 10 digits'); window.location.href='register.html';</script>";
     mysqli_close($conn);
     exit;
 }

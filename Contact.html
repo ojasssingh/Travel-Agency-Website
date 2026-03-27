@@ -48,7 +48,17 @@
             <input type="email" id="contact-email" name="email" placeholder="Enter your email" required>
 
             <label for="contact-phone">Phone *</label>
-            <input type="text" id="contact-phone" name="phone" placeholder="Enter your number" required>
+            <input
+                type="tel"
+                id="contact-phone"
+                name="phone"
+                placeholder="Enter your number"
+                inputmode="numeric"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                title="Phone number should contain exactly 10 digits"
+                required
+            >
 
             <label for="contact-message">Message *</label>
             <textarea id="contact-message" name="message" placeholder="Write your message..." required></textarea>

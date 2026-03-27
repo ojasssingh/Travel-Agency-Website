@@ -59,10 +59,14 @@ mysqli_stmt_close($stmt);
                 <div class="field-group">
                     <label for="phone">Phone Number</label>
                     <input
-                        type="text"
+                        type="tel"
                         id="phone"
                         name="phone"
                         value="<?php echo htmlspecialchars($phone ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        inputmode="numeric"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        title="Phone number should contain exactly 10 digits"
                     >
                 </div>
 

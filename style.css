@@ -105,6 +105,38 @@ body {
     margin-bottom: 30px;
 }
 
+/* ===== COMMON HERO FOR PAGES ===== */
+.page-hero {
+    min-height: 40vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('https://peakvisor.com/photo/India-Gurudongmar-Lake-in-North-Sikkim.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 80px;
+    padding: 32px 24px;
+}
+
+.page-hero-copy {
+    max-width: 680px;
+}
+
+.page-hero h1 {
+    color: white;
+    font-size: 42px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+.page-hero p {
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 15px;
+}
+
 /* SEARCH */
 .search-bar {
     display: flex;
@@ -386,6 +418,11 @@ footer {
     align-items: center;
     background: #dfe6ee;
     padding: 120px 24px 24px;
+}
+
+.page-auth-container {
+    min-height: auto;
+    padding: 56px 24px 72px;
 }
 
 .auth-box {
@@ -731,6 +768,15 @@ footer {
 
     .hero h1 {
         font-size: 30px;
+    }
+
+    .page-hero {
+        min-height: 32vh;
+        margin-top: 116px;
+    }
+
+    .page-hero h1 {
+        font-size: 32px;
     }
 
     .search-bar {

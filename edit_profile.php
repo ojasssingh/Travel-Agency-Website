@@ -39,8 +39,9 @@ mysqli_stmt_close($stmt);
                         id="name"
                         name="name"
                         value="<?php echo htmlspecialchars($name ?? '', ENT_QUOTES, 'UTF-8'); ?>"
-                        pattern="[A-Za-z ]+"
+                        pattern="[A-Za-z ]{2,50}"
                         title="Full name should contain only letters and spaces"
+                        autocomplete="name"
                         required
                     >
                 </div>
@@ -52,6 +53,7 @@ mysqli_stmt_close($stmt);
                         id="email"
                         name="email"
                         value="<?php echo htmlspecialchars($userEmail ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        autocomplete="email"
                         required
                     >
                 </div>
@@ -67,6 +69,7 @@ mysqli_stmt_close($stmt);
                         pattern="[0-9]{10}"
                         maxlength="10"
                         title="Phone number should contain exactly 10 digits"
+                        autocomplete="tel"
                     >
                 </div>
 
@@ -77,6 +80,9 @@ mysqli_stmt_close($stmt);
                         id="city"
                         name="city"
                         value="<?php echo htmlspecialchars($city ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        pattern="[A-Za-z ]{2,50}"
+                        title="City should contain only letters and spaces"
+                        autocomplete="address-level2"
                     >
                 </div>
 

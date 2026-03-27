@@ -12,8 +12,20 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit;
 }
 
-$email = $_POST['email'] ?? '';
+$email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "<script>alert('Please enter a valid email address'); window.location.href='login.html';</script>";
+    mysqli_close($conn);
+    exit;
+}
+
+if ($password === '') {
+    echo "<script>alert('Password is required'); window.location.href='login.html';</script>";
+    mysqli_close($conn);
+    exit;
+}
 
 $stmt = mysqli_prepare($conn, "SELECT name, email FROM users WHERE email = ? AND password = ?");
 

@@ -102,7 +102,9 @@ mysqli_close($conn);
 
             <div class="account-actions">
                 <a href="edit_profile.php" class="auth-btn secondary-btn">Edit Profile</a>
-                <a href="logout.php" class="logout-btn">Logout</a>
+                <form action="logout.php" method="POST" class="logout-form">
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
             </div>
 
             <div class="booking-history">

@@ -38,12 +38,13 @@
                     type="text"
                     name="name"
                     placeholder="Full Name"
-                    pattern="[A-Za-z ]+"
+                    pattern="[A-Za-z ]{2,50}"
                     title="Full name should contain only letters and spaces"
+                    autocomplete="name"
                     required
                 >
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+                <input type="password" name="password" placeholder="Password" minlength="6" maxlength="50" autocomplete="new-password" required>
                 <input
                     type="tel"
                     name="phone"
@@ -63,8 +64,8 @@
 
                 <input type="date" name="dob" required>
                 <textarea name="address" placeholder="Address" required></textarea>
-                <input type="text" name="city" placeholder="City" required>
-                <input type="text" name="state" placeholder="State" required>
+                <input type="text" name="city" placeholder="City" pattern="[A-Za-z ]{2,50}" title="City should contain only letters and spaces" autocomplete="address-level2" required>
+                <input type="text" name="state" placeholder="State" pattern="[A-Za-z ]{2,50}" title="State should contain only letters and spaces" autocomplete="address-level1" required>
 
                 <button type="submit" class="auth-btn">Register</button>
             </form>

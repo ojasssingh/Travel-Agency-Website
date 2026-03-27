@@ -629,6 +629,15 @@ footer {
     margin: 20px 0;
 }
 
+.logout-form {
+    flex: 1;
+    margin: 0;
+}
+
+.logout-form .logout-btn {
+    width: 100%;
+}
+
 .secondary-btn {
     flex: 1;
     display: inline-block;

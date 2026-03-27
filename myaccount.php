@@ -28,7 +28,7 @@ mysqli_stmt_close($userStmt);
 $bookings = [];
 $bookingStmt = mysqli_prepare(
     $conn,
-    "SELECT destination, travel_date, end_date, days, people, hotel_type, preferences, created_at
+    "SELECT destination, travel_date, end_date, days, people, hotel_type, preferences, created_at, status
      FROM bookings
      WHERE user_email = ?
      ORDER BY created_at DESC"
@@ -37,7 +37,7 @@ $bookingStmt = mysqli_prepare(
 if ($bookingStmt) {
     mysqli_stmt_bind_param($bookingStmt, "s", $email);
     mysqli_stmt_execute($bookingStmt);
-    mysqli_stmt_bind_result($bookingStmt, $destination, $travelDate, $endDate, $days, $people, $hotelType, $preferences, $createdAt);
+    mysqli_stmt_bind_result($bookingStmt, $destination, $travelDate, $endDate, $days, $people, $hotelType, $preferences, $createdAt, $status);
 
     while (mysqli_stmt_fetch($bookingStmt)) {
         $bookings[] = [
@@ -49,6 +49,7 @@ if ($bookingStmt) {
             'hotel_type' => $hotelType,
             'preferences' => $preferences,
             'created_at' => $createdAt,
+            'status' => $status,
         ];
     }
 
@@ -66,7 +67,29 @@ mysqli_close($conn);
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="auth-container">
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="Saffron_Logo.jpeg" alt="Saffron Tourism Logo">
+            </a>
+            <h2>Saffron Tourism</h2>
+        </div>
+
+        <nav>
+            <a href="myaccount.php">My Account</a>
+            <a href="booking.html">Book</a>
+            <a href="Contact.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="page-hero-copy">
+            <h1>My Account</h1>
+            <p>Manage your profile, bookings, and upcoming travel plans in one place.</p>
+        </div>
+    </section>
+
+    <div class="auth-container page-auth-container">
         <div class="auth-box account-box">
             <h2>My Account</h2>
 

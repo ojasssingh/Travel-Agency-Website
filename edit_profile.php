@@ -14,6 +14,7 @@ mysqli_stmt_bind_param($stmt, "s", $email);
 mysqli_stmt_execute($stmt);
 mysqli_stmt_bind_result($stmt, $name, $userEmail, $phone, $city);
 mysqli_stmt_fetch($stmt);
+mysqli_stmt_close($stmt);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,15 +22,64 @@ mysqli_stmt_fetch($stmt);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="update_profile.php" method="POST">
-        <input type="text" name="name" value="<?php echo $name; ?>" required>
-        <input type="email" name="email" value="<?php echo $userEmail; ?>" required>
-        <input type="text" name="phone" value="<?php echo $phone; ?>">
-        <input type="text" name="city" value="<?php echo $city; ?>">
+    <div class="auth-container">
+        <div class="auth-box account-box edit-profile-box">
+            <p class="auth-kicker">Manage your details</p>
+            <h2>Edit Profile</h2>
+            <p class="auth-subtitle">Keep your account information up to date for quicker bookings and a smoother trip planning experience.</p>
 
-        <button type="submit">Update</button>
-    </form>
+            <form action="update_profile.php" method="POST" class="profile-form">
+                <div class="field-group">
+                    <label for="name">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value="<?php echo htmlspecialchars($name ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        required
+                    >
+                </div>
+
+                <div class="field-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value="<?php echo htmlspecialchars($userEmail ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        required
+                    >
+                </div>
+
+                <div class="field-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                        type="text"
+                        id="phone"
+                        name="phone"
+                        value="<?php echo htmlspecialchars($phone ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                    >
+                </div>
+
+                <div class="field-group">
+                    <label for="city">City</label>
+                    <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        value="<?php echo htmlspecialchars($city ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                    >
+                </div>
+
+                <div class="profile-actions">
+                    <button type="submit" class="auth-btn">Save Changes</button>
+                    <a href="myaccount.php" class="auth-btn secondary-btn profile-back-btn">Back to Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

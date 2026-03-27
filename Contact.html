@@ -100,8 +100,10 @@
 <footer>
     <div class="footer-left">
         <h3>Subscribe for Special Offers</h3>
-        <input type="email" placeholder="Enter your email">
-        <button>Subscribe</button>
+        <form action="subscribe.php" method="POST" class="subscribe-form">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
     </div>
 
     <div class="footer-links">

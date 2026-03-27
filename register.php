@@ -21,6 +21,14 @@ $address = $_POST['address'] ?? '';
 $city = $_POST['city'] ?? '';
 $state = $_POST['state'] ?? '';
 
+$name = trim($name);
+
+if ($name === '' || !preg_match('/^[A-Za-z ]+$/', $name)) {
+    echo "<script>alert('Full name should contain only letters and spaces'); window.location.href='register.html';</script>";
+    mysqli_close($conn);
+    exit;
+}
+
 $stmt = mysqli_prepare(
     $conn,
     "INSERT INTO users (name, email, password, phone, gender, dob, address, city, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"

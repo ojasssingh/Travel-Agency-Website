@@ -39,6 +39,8 @@ mysqli_stmt_close($stmt);
                         id="name"
                         name="name"
                         value="<?php echo htmlspecialchars($name ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        pattern="[A-Za-z ]+"
+                        title="Full name should contain only letters and spaces"
                         required
                     >
                 </div>

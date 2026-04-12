@@ -1,12 +1,39 @@
 <?php
 require_once "db.php";
 
+function isValidUsername(string $username): bool
+{
+    return (bool)preg_match('/^[a-z]+(?: [a-z]+)*$/', $username);
+}
+
+function isValidEmailAddress(string $email): bool
+{
+    return filter_var($email, FILTER_VALIDATE_EMAIL) !== false
+        && (bool)preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $email);
+}
+
+function isValidDob(string $dob): bool
+{
+    $parsedDob = DateTime::createFromFormat('Y-m-d', $dob);
+
+    if (!$parsedDob || $parsedDob->format('Y-m-d') !== $dob) {
+        return false;
+    }
+
+    $today = new DateTime('today');
+    if ($parsedDob >= $today) {
+        return false;
+    }
+
+    return $parsedDob->diff($today)->y >= 16;
+}
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: register.html");
     exit;
 }
 
-$username = trim($_POST['username'] ?? '');
+$username = strtolower(trim(preg_replace('/\s+/', ' ', $_POST['username'] ?? '')));
 $name = trim($_POST['name'] ?? '');
 $email = strtolower(trim($_POST['email'] ?? ''));
 $password = $_POST['password'] ?? '';
@@ -17,8 +44,8 @@ $address = trim($_POST['address'] ?? '');
 $city = trim($_POST['city'] ?? '');
 $state = trim($_POST['state'] ?? '');
 
-if ($username === '' || !preg_match('/^[A-Za-z0-9_]{3,30}$/', $username)) {
-    echo "<script>alert('Username must be 3 to 30 characters and use only letters, numbers, or underscores'); window.location.href='register.html';</script>";
+if ($username === '' || strlen($username) < 3 || strlen($username) > 30 || !isValidUsername($username)) {
+    echo "<script>alert('Username must be 3 to 30 characters, use only lowercase letters, and may contain spaces between words'); window.location.href='register.html';</script>";
     mysqli_close($conn);
     exit;
 }
@@ -29,8 +56,8 @@ if ($name === '' || !preg_match('/^[A-Za-z ]{2,50}$/', $name)) {
     exit;
 }
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "<script>alert('Please enter a valid email address'); window.location.href='register.html';</script>";
+if (!isValidEmailAddress($email)) {
+    echo "<script>alert('Please enter a valid email address with @ and a proper domain like .com'); window.location.href='register.html';</script>";
     mysqli_close($conn);
     exit;
 }
@@ -53,10 +80,8 @@ if (!in_array($gender, ['Male', 'Female'], true)) {
     exit;
 }
 
-$parsedDob = DateTime::createFromFormat('Y-m-d', $dob);
-
-if (!$parsedDob || $parsedDob->format('Y-m-d') !== $dob || $dob > date('Y-m-d')) {
-    echo "<script>alert('Please select a valid date of birth'); window.location.href='register.html';</script>";
+if (!isValidDob($dob)) {
+    echo "<script>alert('Date of birth must be a past date and age must be at least 16 years'); window.location.href='register.html';</script>";
     mysqli_close($conn);
     exit;
 }

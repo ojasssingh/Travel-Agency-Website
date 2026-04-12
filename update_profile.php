@@ -1,6 +1,12 @@
 <?php
 require_once "auth.php";
 
+function isValidEmailAddress(string $email): bool
+{
+    return filter_var($email, FILTER_VALIDATE_EMAIL) !== false
+        && (bool)preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $email);
+}
+
 requireLogin($conn);
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -20,8 +26,8 @@ if ($name === '' || !preg_match('/^[A-Za-z ]{2,50}$/', $name)) {
     exit();
 }
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "<script>alert('Please enter a valid email address'); window.location.href='edit_profile.php';</script>";
+if (!isValidEmailAddress($email)) {
+    echo "<script>alert('Please enter a valid email address with @ and a proper domain like .com'); window.location.href='edit_profile.php';</script>";
     exit();
 }
 

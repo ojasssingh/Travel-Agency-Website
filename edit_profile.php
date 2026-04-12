@@ -73,6 +73,8 @@ mysqli_close($conn);
                         id="email"
                         name="email"
                         value="<?php echo htmlspecialchars($userEmail ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+                        title="Enter a valid email with @ and a domain extension like .com"
                         autocomplete="email"
                         required
                     >

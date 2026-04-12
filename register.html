@@ -38,8 +38,10 @@
                     type="text"
                     name="username"
                     placeholder="Username"
-                    pattern="[A-Za-z0-9_]{3,30}"
-                    title="Username must be 3 to 30 characters and use only letters, numbers, or underscores"
+                    pattern="[a-z]+(?: [a-z]+)*"
+                    minlength="3"
+                    maxlength="30"
+                    title="Username must be 3 to 30 characters, use only lowercase letters, and may contain spaces between words"
                     autocomplete="username"
                     required
                 >
@@ -52,7 +54,15 @@
                     autocomplete="name"
                     required
                 >
-                <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+                    title="Enter a valid email with @ and a domain extension like .com"
+                    autocomplete="email"
+                    required
+                >
                 <input type="password" name="password" placeholder="Password" minlength="6" maxlength="50" autocomplete="new-password" required>
                 <input
                     type="tel"
@@ -71,7 +81,13 @@
                     <option value="Female">Female</option>
                 </select>
 
-                <input type="date" name="dob" required>
+                <input
+                    type="date"
+                    name="dob"
+                    id="dob"
+                    title="Date of birth must be in the past, not today, and age must be at least 16 years"
+                    required
+                >
                 <textarea name="address" placeholder="Address" required></textarea>
                 <input type="text" name="city" placeholder="City" pattern="[A-Za-z ]{2,50}" title="City should contain only letters and spaces" autocomplete="address-level2" required>
                 <input type="text" name="state" placeholder="State" pattern="[A-Za-z ]{2,50}" title="State should contain only letters and spaces" autocomplete="address-level1" required>
@@ -83,4 +99,19 @@
         </div>
     </div>
 </body>
+<script>
+    (function () {
+        const dobInput = document.getElementById('dob');
+        if (!dobInput) {
+            return;
+        }
+
+        const today = new Date();
+        today.setFullYear(today.getFullYear() - 16);
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        dobInput.max = `${year}-${month}-${day}`;
+    })();
+</script>
 </html>

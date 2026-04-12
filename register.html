@@ -36,6 +36,15 @@
             <form action="register.php" method="POST">
                 <input
                     type="text"
+                    name="username"
+                    placeholder="Username"
+                    pattern="[A-Za-z0-9_]{3,30}"
+                    title="Username must be 3 to 30 characters and use only letters, numbers, or underscores"
+                    autocomplete="username"
+                    required
+                >
+                <input
+                    type="text"
                     name="name"
                     placeholder="Full Name"
                     pattern="[A-Za-z ]{2,50}"

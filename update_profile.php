@@ -1,21 +1,17 @@
 <?php
-session_start();
-include "db.php";
+require_once "auth.php";
 
-if (!isset($_SESSION['user'])) {
-    header("Location: login.html");
-    exit();
-}
+requireLogin($conn);
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: edit_profile.php");
     exit();
 }
 
-$oldEmail = $_SESSION['user'];
+$oldEmail = $_SESSION['user_email'];
 
 $name = trim($_POST['name'] ?? '');
-$email = trim($_POST['email'] ?? '');
+$email = strtolower(trim($_POST['email'] ?? ''));
 $phone = trim($_POST['phone'] ?? '');
 $city = trim($_POST['city'] ?? '');
 
@@ -39,7 +35,7 @@ if ($city !== '' && !preg_match('/^[A-Za-z ]{2,50}$/', $city)) {
     exit();
 }
 
-$userStmt = mysqli_prepare($conn, "UPDATE users SET name=?, email=?, phone=?, city=? WHERE email=?");
+$userStmt = mysqli_prepare($conn, "UPDATE users SET name = ?, email = ?, phone = ?, city = ? WHERE email = ?");
 if (!$userStmt) {
     die("Query preparation failed: " . mysqli_error($conn));
 }
@@ -48,7 +44,7 @@ mysqli_begin_transaction($conn);
 mysqli_stmt_bind_param($userStmt, "sssss", $name, $email, $phone, $city, $oldEmail);
 
 if (mysqli_stmt_execute($userStmt)) {
-    $bookingStmt = mysqli_prepare($conn, "UPDATE bookings SET user_email=? WHERE user_email=?");
+    $bookingStmt = mysqli_prepare($conn, "UPDATE bookings SET user_email = ? WHERE user_email = ?");
 
     if (!$bookingStmt) {
         mysqli_rollback($conn);
@@ -69,8 +65,10 @@ if (mysqli_stmt_execute($userStmt)) {
     mysqli_stmt_close($bookingStmt);
     mysqli_commit($conn);
     mysqli_stmt_close($userStmt);
-    mysqli_close($conn);
     $_SESSION['user'] = $email;
+    $_SESSION['user_email'] = $email;
+    $_SESSION['user_name'] = $name;
+    mysqli_close($conn);
     header("Location: myaccount.php");
     exit();
 } elseif (mysqli_errno($conn) === 1062) {
@@ -86,3 +84,4 @@ if (mysqli_stmt_execute($userStmt)) {
     mysqli_close($conn);
     echo "Update failed: " . $updateError;
 }
+?>

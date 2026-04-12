@@ -4,15 +4,11 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit;
 }
 
-session_start();
-include "db.php";
+require_once "auth.php";
 
-if (!isset($_SESSION['user'])) {
-    echo "<script>alert('Please login first'); window.location.href='login.html';</script>";
-    exit;
-}
+requireLogin($conn);
 
-$user = $_SESSION['user'];
+$user = $_SESSION['user_email'];
 $destination = trim($_POST['destination'] ?? '');
 $date = $_POST['date'] ?? '';
 $endDate = $_POST['endDate'] ?? '';

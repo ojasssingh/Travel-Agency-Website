@@ -1,83 +1,66 @@
 <?php
-session_start();
-<<<<<<< HEAD
- 
-$conn = mysqli_connect("localhost", "root", "", "tourism", 3307);
- 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
- 
-=======
-include "db.php";
+require_once "auth.php";
 
->>>>>>> eeb3175 (Enhance email subscription functionality with validation and error handling)
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    header("Location: login.html");
-    exit;
+    if (attemptAutoLogin($conn) || isset($_SESSION['user_id'])) {
+        mysqli_close($conn);
+        authRedirect('myaccount.php');
+    }
+
+    mysqli_close($conn);
+    authRedirect('login.html');
 }
- 
-$email = trim($_POST['email'] ?? '');
+
+$email = strtolower(trim($_POST['email'] ?? ''));
 $password = $_POST['password'] ?? '';
- 
+$rememberMe = isset($_POST['remember_me']);
+
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "<script>alert('Please enter a valid email address'); window.location.href='login.html';</script>";
     mysqli_close($conn);
-    exit;
+    authAlertRedirect('Please enter a valid email address.', 'login.html');
 }
- 
+
 if ($password === '') {
-    echo "<script>alert('Password is required'); window.location.href='login.html';</script>";
     mysqli_close($conn);
-    exit;
+    authAlertRedirect('Password is required.', 'login.html');
 }
- 
-$stmt = mysqli_prepare($conn, "SELECT name, email FROM users WHERE email = ? AND password = ?");
- 
+
+$stmt = $conn->prepare("SELECT id, username, name, email, password FROM users WHERE email = ? LIMIT 1");
+
 if (!$stmt) {
-    die("Query preparation failed: " . mysqli_error($conn));
+    die("Query preparation failed: " . $conn->error);
 }
- 
-mysqli_stmt_bind_param($stmt, "ss", $email, $password);
-if (!mysqli_stmt_execute($stmt)) {
-    die("Login query failed: " . mysqli_stmt_error($stmt));
+
+$stmt->bind_param("s", $email);
+
+if (!$stmt->execute()) {
+    $statementError = $stmt->error;
+    $stmt->close();
+    die("Login query failed: " . $statementError);
 }
-mysqli_stmt_bind_result($stmt, $name, $userEmail);
- 
-if (mysqli_stmt_fetch($stmt)) {
-<<<<<<< HEAD
-    // --- Session (server-side) ---
-    $_SESSION['user']      = $email;
-=======
-    mysqli_stmt_close($stmt);
+
+$stmt->bind_result($id, $username, $name, $userEmail, $passwordHash);
+$userFound = $stmt->fetch();
+$stmt->close();
+
+if (!$userFound || !password_verify($password, $passwordHash)) {
     mysqli_close($conn);
-    $_SESSION['user'] = $email;
->>>>>>> eeb3175 (Enhance email subscription functionality with validation and error handling)
-    $_SESSION['user_name'] = $name;
- 
-    // --- Cookie (client-side, 7-day remember-me) ---
-    $cookieExpiry = time() + (7 * 24 * 60 * 60); // 7 days
-    setcookie('user_email', $email, [
-        'expires'  => $cookieExpiry,
-        'path'     => '/',
-        'secure'   => true,   // HTTPS only — set false for local dev
-        'httponly' => true,   // not accessible via JavaScript
-        'samesite' => 'Strict'
-    ]);
-    setcookie('user_name', $name, [
-        'expires'  => $cookieExpiry,
-        'path'     => '/',
-        'secure'   => true,
-        'httponly' => true,
-        'samesite' => 'Strict'
-    ]);
- 
-    header("Location: myaccount.php");
-    exit();
-} else {
-    echo "<script>alert('Invalid email or password'); window.location.href='login.html';</script>";
+    authAlertRedirect('Invalid email or password.', 'login.html');
 }
- 
-mysqli_stmt_close($stmt);
+
+setLoggedInUserSession([
+    'id' => $id,
+    'username' => $username,
+    'name' => $name,
+    'email' => $userEmail,
+]);
+
+if ($rememberMe) {
+    createRememberMeToken($conn, (int)$id);
+} else {
+    forgetRememberedLogin($conn, (int)$id);
+}
+
 mysqli_close($conn);
+authRedirect('myaccount.php');
 ?>

@@ -1,4 +1,6 @@
 <?php
+require_once "config.php";
+
 $servername = "localhost";
 $username = "root";
 $password = "";

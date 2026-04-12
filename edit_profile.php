@@ -1,15 +1,11 @@
 <?php
-session_start();
-include "db.php";
+require_once "auth.php";
 
-if (!isset($_SESSION['user'])) {
-    header("Location: login.html");
-    exit();
-}
+requireLogin($conn);
 
-$email = $_SESSION['user'];
+$email = $_SESSION['user_email'];
 
-$stmt = mysqli_prepare($conn, "SELECT name, email, phone, city FROM users WHERE email=?");
+$stmt = mysqli_prepare($conn, "SELECT username, name, email, phone, city FROM users WHERE email = ?");
 if (!$stmt) {
     die("Query preparation failed: " . mysqli_error($conn));
 }
@@ -19,14 +15,12 @@ if (!mysqli_stmt_execute($stmt)) {
     die("Profile query failed: " . mysqli_stmt_error($stmt));
 }
 
-mysqli_stmt_bind_result($stmt, $name, $userEmail, $phone, $city);
+mysqli_stmt_bind_result($stmt, $username, $name, $userEmail, $phone, $city);
 if (!mysqli_stmt_fetch($stmt)) {
     mysqli_stmt_close($stmt);
+    logoutUser($conn);
     mysqli_close($conn);
-    session_unset();
-    session_destroy();
-    echo "<script>alert('Your account could not be found. Please log in again.'); window.location.href='login.html';</script>";
-    exit();
+    authAlertRedirect('Your account could not be found. Please log in again.', 'login.html');
 }
 
 mysqli_stmt_close($stmt);
@@ -48,6 +42,16 @@ mysqli_close($conn);
             <p class="auth-subtitle">Keep your account information up to date for quicker bookings and a smoother trip planning experience.</p>
 
             <form action="update_profile.php" method="POST" class="profile-form">
+                <div class="field-group">
+                    <label for="username">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        value="<?php echo htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        readonly
+                    >
+                </div>
+
                 <div class="field-group">
                     <label for="name">Full Name</label>
                     <input

@@ -1,14 +1,10 @@
 <?php
-session_start();
-include "db.php";
+require_once "auth.php";
 
-if (!isset($_SESSION['user'])) {
-    header("Location: login.html");
-    exit();
-}
+requireLogin($conn);
 
-$email = $_SESSION['user'];
-$userStmt = mysqli_prepare($conn, "SELECT name, email, phone, city FROM users WHERE email = ?");
+$email = $_SESSION['user_email'];
+$userStmt = mysqli_prepare($conn, "SELECT username, name, email, phone, city FROM users WHERE email = ?");
 
 if (!$userStmt) {
     die("Query preparation failed: " . mysqli_error($conn));
@@ -18,14 +14,12 @@ mysqli_stmt_bind_param($userStmt, "s", $email);
 if (!mysqli_stmt_execute($userStmt)) {
     die("User query failed: " . mysqli_stmt_error($userStmt));
 }
-mysqli_stmt_bind_result($userStmt, $name, $userEmail, $phone, $city);
+mysqli_stmt_bind_result($userStmt, $username, $name, $userEmail, $phone, $city);
 if (!mysqli_stmt_fetch($userStmt)) {
     mysqli_stmt_close($userStmt);
+    logoutUser($conn);
     mysqli_close($conn);
-    session_unset();
-    session_destroy();
-    echo "<script>alert('Your account session is no longer valid. Please log in again.'); window.location.href='login.html';</script>";
-    exit();
+    authAlertRedirect('Your account session is no longer valid. Please log in again.', 'login.html');
 }
 mysqli_stmt_close($userStmt);
 
@@ -102,6 +96,7 @@ mysqli_close($conn);
             <h2>My Account</h2>
 
             <div class="account-info">
+                <p><strong>Username:</strong> <?php echo htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
                 <p><strong>Name:</strong> <?php echo htmlspecialchars($name ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
                 <p><strong>Email:</strong> <?php echo htmlspecialchars($userEmail ?? $email, ENT_QUOTES, 'UTF-8'); ?></p>
                 <p><strong>Phone:</strong> <?php echo htmlspecialchars($phone ?? '', ENT_QUOTES, 'UTF-8'); ?></p>

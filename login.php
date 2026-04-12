@@ -1,5 +1,6 @@
 <?php
 session_start();
+<<<<<<< HEAD
  
 $conn = mysqli_connect("localhost", "root", "", "tourism", 3307);
  
@@ -7,6 +8,10 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
  
+=======
+include "db.php";
+
+>>>>>>> eeb3175 (Enhance email subscription functionality with validation and error handling)
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: login.html");
     exit;
@@ -34,12 +39,20 @@ if (!$stmt) {
 }
  
 mysqli_stmt_bind_param($stmt, "ss", $email, $password);
-mysqli_stmt_execute($stmt);
+if (!mysqli_stmt_execute($stmt)) {
+    die("Login query failed: " . mysqli_stmt_error($stmt));
+}
 mysqli_stmt_bind_result($stmt, $name, $userEmail);
  
 if (mysqli_stmt_fetch($stmt)) {
+<<<<<<< HEAD
     // --- Session (server-side) ---
     $_SESSION['user']      = $email;
+=======
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+    $_SESSION['user'] = $email;
+>>>>>>> eeb3175 (Enhance email subscription functionality with validation and error handling)
     $_SESSION['user_name'] = $name;
  
     // --- Cookie (client-side, 7-day remember-me) ---

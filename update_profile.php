@@ -7,6 +7,11 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: edit_profile.php");
+    exit();
+}
+
 $oldEmail = $_SESSION['user'];
 
 $name = trim($_POST['name'] ?? '');
@@ -34,16 +39,50 @@ if ($city !== '' && !preg_match('/^[A-Za-z ]{2,50}$/', $city)) {
     exit();
 }
 
-$stmt = mysqli_prepare($conn, "UPDATE users SET name=?, email=?, phone=?, city=? WHERE email=?");
-mysqli_stmt_bind_param($stmt, "sssss", $name, $email, $phone, $city, $oldEmail);
+$userStmt = mysqli_prepare($conn, "UPDATE users SET name=?, email=?, phone=?, city=? WHERE email=?");
+if (!$userStmt) {
+    die("Query preparation failed: " . mysqli_error($conn));
+}
 
-if (mysqli_stmt_execute($stmt)) {
+mysqli_begin_transaction($conn);
+mysqli_stmt_bind_param($userStmt, "sssss", $name, $email, $phone, $city, $oldEmail);
+
+if (mysqli_stmt_execute($userStmt)) {
+    $bookingStmt = mysqli_prepare($conn, "UPDATE bookings SET user_email=? WHERE user_email=?");
+
+    if (!$bookingStmt) {
+        mysqli_rollback($conn);
+        mysqli_stmt_close($userStmt);
+        die("Query preparation failed: " . mysqli_error($conn));
+    }
+
+    mysqli_stmt_bind_param($bookingStmt, "ss", $email, $oldEmail);
+
+    if (!mysqli_stmt_execute($bookingStmt)) {
+        $bookingError = mysqli_stmt_error($bookingStmt);
+        mysqli_stmt_close($bookingStmt);
+        mysqli_stmt_close($userStmt);
+        mysqli_rollback($conn);
+        die("Booking email update failed: " . $bookingError);
+    }
+
+    mysqli_stmt_close($bookingStmt);
+    mysqli_commit($conn);
+    mysqli_stmt_close($userStmt);
+    mysqli_close($conn);
     $_SESSION['user'] = $email;
     header("Location: myaccount.php");
     exit();
 } elseif (mysqli_errno($conn) === 1062) {
+    mysqli_rollback($conn);
+    mysqli_stmt_close($userStmt);
+    mysqli_close($conn);
     echo "<script>alert('Email already registered'); window.location.href='edit_profile.php';</script>";
     exit();
 } else {
-    echo "Update failed";
+    $updateError = mysqli_stmt_error($userStmt);
+    mysqli_rollback($conn);
+    mysqli_stmt_close($userStmt);
+    mysqli_close($conn);
+    echo "Update failed: " . $updateError;
 }

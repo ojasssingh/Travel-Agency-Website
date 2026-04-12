@@ -1,6 +1,24 @@
 <?php
 include "db.php";
 
+function normalizeEmail(string $email): string
+{
+    return strtolower(trim($email));
+}
+
+function isValidSubscriptionEmail(string $email): bool
+{
+    if ($email === '' || strlen($email) > 150) {
+        return false;
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return false;
+    }
+
+    return (bool)preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $email);
+}
+
 function getRedirectTarget(): string
 {
     $fallback = "index.html";
@@ -36,16 +54,35 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 
 $redirectTarget = getRedirectTarget();
-$email = trim($_POST["email"] ?? "");
+$email = normalizeEmail($_POST["email"] ?? "");
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if (!isValidSubscriptionEmail($email)) {
     alertAndRedirect("Please enter a valid email address.", $redirectTarget);
+}
+
+$createTableSql = <<<'SQL'
+CREATE TABLE IF NOT EXISTS subscribers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    subscribed_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('active','unsubscribed') DEFAULT 'active',
+    source VARCHAR(50) DEFAULT 'website',
+    CONSTRAINT chk_subscribers_email CHECK (email REGEXP '^[^[:space:]@]+@[^[:space:]@]+\\.[^[:space:]@]+$')
+)
+SQL;
+
+if (!$conn->query($createTableSql)) {
+    $dbError = $conn->error;
+    $conn->close();
+    alertAndRedirect("Subscription setup failed: " . $dbError, $redirectTarget);
 }
 
 $stmt = $conn->prepare("INSERT INTO subscribers (email) VALUES (?)");
 
 if (!$stmt) {
-    alertAndRedirect("Unable to process your subscription right now.", $redirectTarget);
+    $dbError = $conn->error;
+    $conn->close();
+    alertAndRedirect("Unable to process your subscription right now: " . $dbError, $redirectTarget);
 }
 
 $stmt->bind_param("s", $email);
@@ -56,12 +93,13 @@ if ($stmt->execute()) {
     alertAndRedirect("Subscribed successfully! You will receive our special offers.", $redirectTarget);
 }
 
-if ($conn->errno === 1062) {
+if ($stmt->errno === 1062 || $conn->errno === 1062) {
     $stmt->close();
     $conn->close();
     alertAndRedirect("This email is already subscribed.", $redirectTarget);
 }
 
+$statementError = $stmt->error;
 $stmt->close();
 $conn->close();
-alertAndRedirect("Subscription failed. Please try again.", $redirectTarget);
+alertAndRedirect("Subscription failed: " . $statementError, $redirectTarget);

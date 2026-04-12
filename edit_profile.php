@@ -10,11 +10,27 @@ if (!isset($_SESSION['user'])) {
 $email = $_SESSION['user'];
 
 $stmt = mysqli_prepare($conn, "SELECT name, email, phone, city FROM users WHERE email=?");
+if (!$stmt) {
+    die("Query preparation failed: " . mysqli_error($conn));
+}
+
 mysqli_stmt_bind_param($stmt, "s", $email);
-mysqli_stmt_execute($stmt);
+if (!mysqli_stmt_execute($stmt)) {
+    die("Profile query failed: " . mysqli_stmt_error($stmt));
+}
+
 mysqli_stmt_bind_result($stmt, $name, $userEmail, $phone, $city);
-mysqli_stmt_fetch($stmt);
+if (!mysqli_stmt_fetch($stmt)) {
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+    session_unset();
+    session_destroy();
+    echo "<script>alert('Your account could not be found. Please log in again.'); window.location.href='login.html';</script>";
+    exit();
+}
+
 mysqli_stmt_close($stmt);
+mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">

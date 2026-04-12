@@ -1,15 +1,10 @@
 <?php
 session_start();
+include "db.php";
 
 if (!isset($_SESSION['user'])) {
     header("Location: login.html");
     exit();
-}
-
-$conn = mysqli_connect("localhost", "root", "", "tourism", 3307);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
 }
 
 $email = $_SESSION['user'];
@@ -20,9 +15,18 @@ if (!$userStmt) {
 }
 
 mysqli_stmt_bind_param($userStmt, "s", $email);
-mysqli_stmt_execute($userStmt);
+if (!mysqli_stmt_execute($userStmt)) {
+    die("User query failed: " . mysqli_stmt_error($userStmt));
+}
 mysqli_stmt_bind_result($userStmt, $name, $userEmail, $phone, $city);
-mysqli_stmt_fetch($userStmt);
+if (!mysqli_stmt_fetch($userStmt)) {
+    mysqli_stmt_close($userStmt);
+    mysqli_close($conn);
+    session_unset();
+    session_destroy();
+    echo "<script>alert('Your account session is no longer valid. Please log in again.'); window.location.href='login.html';</script>";
+    exit();
+}
 mysqli_stmt_close($userStmt);
 
 $bookings = [];
@@ -36,7 +40,9 @@ $bookingStmt = mysqli_prepare(
 
 if ($bookingStmt) {
     mysqli_stmt_bind_param($bookingStmt, "s", $email);
-    mysqli_stmt_execute($bookingStmt);
+    if (!mysqli_stmt_execute($bookingStmt)) {
+        die("Booking query failed: " . mysqli_stmt_error($bookingStmt));
+    }
     mysqli_stmt_bind_result($bookingStmt, $destination, $travelDate, $endDate, $days, $people, $hotelType, $preferences, $createdAt, $status);
 
     while (mysqli_stmt_fetch($bookingStmt)) {
@@ -54,6 +60,8 @@ if ($bookingStmt) {
     }
 
     mysqli_stmt_close($bookingStmt);
+} else {
+    die("Query preparation failed: " . mysqli_error($conn));
 }
 
 mysqli_close($conn);

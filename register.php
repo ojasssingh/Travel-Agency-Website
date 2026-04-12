@@ -1,10 +1,5 @@
 <?php
-
-$conn = mysqli_connect("localhost", "root", "", "tourism", 3307);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include "db.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: register.html");

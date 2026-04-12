@@ -111,7 +111,16 @@
     <div class="footer-left">
         <h3>Subscribe for Special Offers</h3>
         <form action="subscribe.php" method="POST" class="subscribe-form">
-            <input type="email" name="email" placeholder="Enter your email" required>
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                autocomplete="email"
+                maxlength="150"
+                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                title="Enter a valid email address like name@email.com"
+                required
+            >
             <button type="submit">Subscribe</button>
         </form>
     </div>
@@ -133,5 +142,6 @@
     </div>
 </footer>
 
+<script src="subscribe.js"></script>
 </body>
 </html>

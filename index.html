@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saffron Tourism - Tourism Website</title>
-
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+ 
 <!-- ================= NAVBAR ================= -->
 <header class="navbar">
     <div class="logo">
         <img src="Saffron_Logo.jpeg" alt="Saffron Tourism Logo" class="logo-img">
         <h2>Saffron Tourism</h2>
     </div>
-
     <nav>
         <a href="myaccount.php">My Account</a>
         <a href="register.html">Register</a>
@@ -25,13 +22,12 @@
         <div class="menu-icon"></div>
     </nav>
 </header>
-
+ 
 <!-- ================= HERO ================= -->
 <section class="hero">
     <div class="hero-overlay">
         <h1>BOOK 3 MONTHS BEFORE TOUR DATE</h1>
         <h2>AND GET 5% OFF ON YOUR TOUR</h2>
-
         <form action="booking.html" method="GET" class="search-bar">
             <select name="place" required>
                 <option value="">Select Category</option>
@@ -41,9 +37,7 @@
                 <option value="Kerala">Kerala</option>
                 <option value="Uttar Pradesh">Uttar Pradesh</option>
             </select>
-
             <input type="date" name="date" required>
-
             <select name="people" required>
                 <option value="">Number of People</option>
                 <option value="1">1</option>
@@ -52,96 +46,93 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-
             <button type="submit">Search</button>
         </form>
     </div>
 </section>
-
+ 
 <!-- ================= POPULAR ================= -->
 <section class="popular">
     <h2>Popular Tours</h2>
-
-    <div class="tour-container">
-
-        <!-- Andaman -->
-        <div class="card andaman" data-detail="andamanNicobar.html" tabindex="0" role="link" aria-label="View Andaman and Nicobar tour details">
-            <div class="card-img">
-                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/02/59/36/0a/ross-island.jpg?w=1400&h=1400&s=1" alt="Andaman and Nicobar">
-            </div>
-            <div class="card-content">
-                <h3>Andaman & Nicobar</h3>
-                <p>6 Days</p>
-                <span>From Rs.40,000</span>
-                <button type="button" class="book-btn" data-book-place="Andaman">
-                    Book Now
-                </button>
-            </div>
-        </div>
-
-        <!-- Rajasthan -->
-        <div class="card rajasthan" data-detail="rajasthan.html" tabindex="0" role="link" aria-label="View Rajasthan tour details">
-            <div class="card-img">
-                <img src="https://indiaholidaymall.com/images/highlights/6-Top-Rajasthan-Tourist-Places.jpg" alt="Rajasthan">
-            </div>
-            <div class="card-content">
-                <h3>Rajasthan</h3>
-                <p>7 Days</p>
-                <span>From Rs.30,000</span>
-                <button type="button" class="book-btn" data-book-place="Rajasthan">
-                    Book Now
-                </button>
-            </div>
-        </div>
-
-        <!-- Kashmir -->
-        <div class="card kashmir" data-detail="kashmir.html" tabindex="0" role="link" aria-label="View Kashmir tour details">
-            <div class="card-img">
-                <img src="https://media.cntraveler.com/photos/643d5d0a5722b1af03793a06/16:9/w_2560%2Cc_limit/Dal%2520Lake_GettyImages-1323846766.jpg" alt="Kashmir">
-            </div>
-            <div class="card-content">
-                <h3>Kashmir</h3>
-                <p>7 Days</p>
-                <span>From Rs.35,000</span>
-                <button type="button" class="book-btn" data-book-place="Kashmir">
-                    Book Now
-                </button>
-            </div>
-        </div>
-
-        <!-- Kerala -->
-        <div class="card kerala" data-detail="kerla.html" tabindex="0" role="link" aria-label="View Kerala tour details">
-            <div class="card-img">
-                <img src="https://lumiereholidays.com/storage/pageContent/1749716093684a8c7d42359.jpeg" alt="Kerala">
-            </div>
-            <div class="card-content">
-                <h3>Kerala</h3>
-                <p>6 Days</p>
-                <span>From Rs.25,000</span>
-                <button type="button" class="book-btn" data-book-place="Kerala">
-                    Book Now
-                </button>
-            </div>
-        </div>
-
-        <!-- Uttar Pradesh -->
-        <div class="card up" data-detail="UP.html" tabindex="0" role="link" aria-label="View Uttar Pradesh tour details">
-            <div class="card-img">
-                <img src="https://i0.wp.com/www.humansofuttarakhand.com/wp-content/uploads/2020/07/HOU-DEVPARYAG-3.jpg" alt="Uttar Pradesh">
-            </div>
-            <div class="card-content">
-                <h3>Uttar Pradesh</h3>
-                <p>5 Days</p>
-                <span>From Rs.22,000</span>
-                <button type="button" class="book-btn" data-book-place="Uttar Pradesh">
-                    Book Now
-                </button>
-            </div>
-        </div>
-
-    </div>
+ 
+    <div class="slider-wrapper">
+        <button class="slider-arrow slider-arrow--left" aria-label="Previous">&#10094;</button>
+ 
+        <div class="slider-track-outer">
+            <div class="tour-container slider-track">
+ 
+                <!-- Andaman -->
+                <div class="card andaman" data-detail="andamanNicobar.html" tabindex="0" role="link" aria-label="View Andaman and Nicobar tour details">
+                    <div class="card-img">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/02/59/36/0a/ross-island.jpg?w=1400&h=1400&s=1" alt="Andaman and Nicobar">
+                    </div>
+                    <div class="card-content">
+                        <h3>Andaman & Nicobar</h3>
+                        <p>6 Days</p>
+                        <span>From Rs.40,000</span>
+                        <button type="button" class="book-btn" data-book-place="Andaman">Book Now</button>
+                    </div>
+                </div>
+ 
+                <!-- Rajasthan -->
+                <div class="card rajasthan" data-detail="rajasthan.html" tabindex="0" role="link" aria-label="View Rajasthan tour details">
+                    <div class="card-img">
+                        <img src="https://indiaholidaymall.com/images/highlights/6-Top-Rajasthan-Tourist-Places.jpg" alt="Rajasthan">
+                    </div>
+                    <div class="card-content">
+                        <h3>Rajasthan</h3>
+                        <p>7 Days</p>
+                        <span>From Rs.30,000</span>
+                        <button type="button" class="book-btn" data-book-place="Rajasthan">Book Now</button>
+                    </div>
+                </div>
+ 
+                <!-- Kashmir -->
+                <div class="card kashmir" data-detail="kashmir.html" tabindex="0" role="link" aria-label="View Kashmir tour details">
+                    <div class="card-img">
+                        <img src="https://media.cntraveler.com/photos/643d5d0a5722b1af03793a06/16:9/w_2560%2Cc_limit/Dal%2520Lake_GettyImages-1323846766.jpg" alt="Kashmir">
+                    </div>
+                    <div class="card-content">
+                        <h3>Kashmir</h3>
+                        <p>7 Days</p>
+                        <span>From Rs.35,000</span>
+                        <button type="button" class="book-btn" data-book-place="Kashmir">Book Now</button>
+                    </div>
+                </div>
+ 
+                <!-- Kerala -->
+                <div class="card kerala" data-detail="kerla.html" tabindex="0" role="link" aria-label="View Kerala tour details">
+                    <div class="card-img">
+                        <img src="https://lumiereholidays.com/storage/pageContent/1749716093684a8c7d42359.jpeg" alt="Kerala">
+                    </div>
+                    <div class="card-content">
+                        <h3>Kerala</h3>
+                        <p>6 Days</p>
+                        <span>From Rs.25,000</span>
+                        <button type="button" class="book-btn" data-book-place="Kerala">Book Now</button>
+                    </div>
+                </div>
+ 
+                <!-- Uttar Pradesh -->
+                <div class="card up" data-detail="UP.html" tabindex="0" role="link" aria-label="View Uttar Pradesh tour details">
+                    <div class="card-img">
+                        <img src="https://i0.wp.com/www.humansofuttarakhand.com/wp-content/uploads/2020/07/HOU-DEVPARYAG-3.jpg" alt="Uttar Pradesh">
+                    </div>
+                    <div class="card-content">
+                        <h3>Uttar Pradesh</h3>
+                        <p>5 Days</p>
+                        <span>From Rs.22,000</span>
+                        <button type="button" class="book-btn" data-book-place="Uttar Pradesh">Book Now</button>
+                    </div>
+                </div>
+ 
+            </div><!-- /.slider-track -->
+        </div><!-- /.slider-track-outer -->
+ 
+        <button class="slider-arrow slider-arrow--right" aria-label="Next">&#10095;</button>
+    </div><!-- /.slider-wrapper -->
 </section>
-
+ 
 <!-- ================= ABOUT ================= -->
 <section class="about">
     <div class="about-left">
@@ -154,7 +145,6 @@
             of India's beauty and heritage.
         </p>
     </div>
-
     <div class="about-right">
         <ul>
             <li>Passionate expert tour managers</li>
@@ -166,7 +156,7 @@
         <button class="about-btn">About Us</button>
     </div>
 </section>
-
+ 
 <!-- ================= FOOTER ================= -->
 <footer>
     <div class="footer-left">
@@ -185,7 +175,6 @@
             <button type="submit">Subscribe</button>
         </form>
     </div>
-
     <div class="footer-links">
         <div>
             <h4>Information</h4>
@@ -193,7 +182,6 @@
             <a href="#">Payment Details</a>
             <a href="#">Contact Us</a>
         </div>
-
         <div>
             <h4>Destinations</h4>
             <a href="#">Andaman</a>
@@ -202,47 +190,8 @@
         </div>
     </div>
 </footer>
-
+ 
 <script src="subscribe.js"></script>
-<script>
-const cards = document.querySelectorAll(".card[data-detail]");
-const bookButtons = document.querySelectorAll(".book-btn[data-book-place]");
-
-cards.forEach((card, index) => {
-    const openDetailPage = () => {
-        window.location.href = card.dataset.detail;
-    };
-
-    card.addEventListener("click", openDetailPage);
-    card.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            openDetailPage();
-        }
-    });
-
-    card.style.transitionDelay = `${index * 0.1}s`;
-});
-
-bookButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const selectedPlace = encodeURIComponent(button.dataset.bookPlace);
-        window.location.href = `booking.html?place=${selectedPlace}`;
-    });
-});
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.2 });
-
-cards.forEach((card) => observer.observe(card));
-</script>
-
+ 
 </body>
 </html>

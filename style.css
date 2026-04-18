@@ -848,3 +848,62 @@ footer {
         flex-direction: column;
     }
 }
+ 
+/* ================= CAROUSEL ================= */
+ 
+.slider-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+ 
+.slider-track-outer {
+    flex: 1;
+    overflow: hidden;
+    padding: 16px 2px;
+    margin: -16px -2px;
+}
+ 
+/* Override .tour-container's wrap + center so cards sit in a single row */
+.tour-container.slider-track {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    will-change: transform;
+    cursor: grab;
+}
+ 
+.tour-container.slider-track.is-grabbing {
+    cursor: grabbing;
+    user-select: none;
+}
+ 
+/* Lock every card to its original size — prevent flex squishing */
+.tour-container.slider-track .card {
+    flex: 0 0 300px;
+    width: 300px;
+}
+ 
+/* Arrow buttons */
+.slider-arrow {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    background: #1f2d3a;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+ 
+.slider-arrow:hover  { background: #34495e; transform: scale(1.1); }
+.slider-arrow:focus-visible { outline: 3px solid #8faec6; outline-offset: 3px; }
+ 
+@media (max-width: 768px) {
+    .slider-arrow { width: 36px; height: 36px; font-size: 15px; }
+}

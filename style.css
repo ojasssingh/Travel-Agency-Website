@@ -466,6 +466,45 @@ footer {
     transition: 0.3s;
 }
 
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    margin: 0;
+}
+
+.error-msg {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 20;
+    background: #ff4d4d;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 1.35;
+    margin-top: 5px;
+    display: none;
+    animation: validationFadeIn 0.3s ease;
+    box-shadow: 0 8px 18px rgba(255, 77, 77, 0.25);
+}
+
+input.error,
+select.error,
+textarea.error {
+    border: 2px solid red !important;
+}
+
+@keyframes validationFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 .auth-box textarea {
     min-height: 90px;
     resize: vertical;
@@ -761,8 +800,10 @@ footer {
 }
 
 .field-group {
+    position: relative;
     display: grid;
     gap: 6px;
+    margin-bottom: 10px;
 }
 
 .field-group label {
@@ -1147,6 +1188,12 @@ body.success-shell {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+}
+
+.billing-grid .input-group,
+.split-fields .input-group,
+.method-panel .input-group {
+    margin-bottom: 20px;
 }
 
 .split-fields {

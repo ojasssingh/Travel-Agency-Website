@@ -34,63 +34,52 @@
             <h2>Create Account</h2>
 
             <form action="register.php" method="POST">
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    pattern="[a-z]+(?: [a-z]+)*"
-                    minlength="3"
-                    maxlength="30"
-                    title="Username must be 3 to 30 characters, use only lowercase letters, and may contain spaces between words"
-                    autocomplete="username"
-                    required
-                >
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Full Name"
-                    pattern="[A-Za-z ]{2,50}"
-                    title="Full name should contain only letters and spaces"
-                    autocomplete="name"
-                    required
-                >
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
-                    title="Enter a valid email with @ and a domain extension like .com"
-                    autocomplete="email"
-                    required
-                >
-                <input type="password" name="password" placeholder="Password" minlength="6" maxlength="50" autocomplete="new-password" required>
-                <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    inputmode="numeric"
-                    pattern="[0-9]{10}"
-                    maxlength="10"
-                    title="Phone number should contain exactly 10 digits"
-                    required
-                >
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="Username" pattern="[a-z]+(?: [a-z]+)*" minlength="3" maxlength="30" title="Username must be 3 to 30 characters, use only lowercase letters, and may contain spaces between words" autocomplete="username" required>
+                    <div class="error-msg" id="usernameError"></div>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="name" name="name" placeholder="Full Name" pattern="[A-Za-z ]{2,50}" title="Full name should contain only letters and spaces" autocomplete="name" required>
+                    <div class="error-msg" id="nameError"></div>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}" title="Enter a valid email with @ and a domain extension like .com" autocomplete="email" required>
+                    <div class="error-msg" id="emailError"></div>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Password" minlength="6" maxlength="50" autocomplete="new-password" required>
+                    <div class="error-msg" id="passwordError"></div>
+                </div>
+                <div class="input-group">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" title="Phone number should contain exactly 10 digits" required>
+                    <div class="error-msg" id="phoneError"></div>
+                </div>
 
-                <select name="gender" required>
-                    <option value="">Select Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
+                <div class="input-group">
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <div class="error-msg" id="genderError"></div>
+                </div>
 
-                <input
-                    type="date"
-                    name="dob"
-                    id="dob"
-                    title="Date of birth must be in the past, not today, and age must be at least 16 years"
-                    required
-                >
-                <textarea name="address" placeholder="Address" required></textarea>
-                <input type="text" name="city" placeholder="City" pattern="[A-Za-z ]{2,50}" title="City should contain only letters and spaces" autocomplete="address-level2" required>
-                <input type="text" name="state" placeholder="State" pattern="[A-Za-z ]{2,50}" title="State should contain only letters and spaces" autocomplete="address-level1" required>
+                <div class="input-group">
+                    <input type="date" name="dob" id="dob" title="Date of birth must be in the past, not today, and age must be at least 16 years" required>
+                    <div class="error-msg" id="dobError"></div>
+                </div>
+                <div class="input-group">
+                    <textarea id="address" name="address" placeholder="Address" required></textarea>
+                    <div class="error-msg" id="addressError"></div>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="city" name="city" placeholder="City" pattern="[A-Za-z ]{2,50}" title="City should contain only letters and spaces" autocomplete="address-level2" required>
+                    <div class="error-msg" id="cityError"></div>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="state" name="state" placeholder="State" pattern="[A-Za-z ]{2,50}" title="State should contain only letters and spaces" autocomplete="address-level1" required>
+                    <div class="error-msg" id="stateError"></div>
+                </div>
 
                 <button type="submit" class="auth-btn">Register</button>
             </form>
@@ -98,8 +87,8 @@
             <a href="login.html">Already have an account? Login</a>
         </div>
     </div>
-</body>
-<script>
+    <script src="validation.js"></script>
+    <script>
     (function () {
         const dobInput = document.getElementById('dob');
         if (!dobInput) {
@@ -113,5 +102,6 @@
         const day = String(today.getDate()).padStart(2, '0');
         dobInput.max = `${year}-${month}-${day}`;
     })();
-</script>
+    </script>
+</body>
 </html>

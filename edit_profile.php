@@ -64,6 +64,7 @@ mysqli_close($conn);
                         autocomplete="name"
                         required
                     >
+                    <div class="error-msg" id="nameError"></div>
                 </div>
 
                 <div class="field-group">
@@ -78,6 +79,7 @@ mysqli_close($conn);
                         autocomplete="email"
                         required
                     >
+                    <div class="error-msg" id="emailError"></div>
                 </div>
 
                 <div class="field-group">
@@ -93,6 +95,7 @@ mysqli_close($conn);
                         title="Phone number should contain exactly 10 digits"
                         autocomplete="tel"
                     >
+                    <div class="error-msg" id="phoneError"></div>
                 </div>
 
                 <div class="field-group">
@@ -106,6 +109,7 @@ mysqli_close($conn);
                         title="City should contain only letters and spaces"
                         autocomplete="address-level2"
                     >
+                    <div class="error-msg" id="cityError"></div>
                 </div>
 
                 <div class="profile-actions">
@@ -115,5 +119,6 @@ mysqli_close($conn);
             </form>
         </div>
     </div>
+    <script src="validation.js"></script>
 </body>
 </html>

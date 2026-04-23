@@ -73,20 +73,32 @@ $defaultEndDate = date("Y-m-d", strtotime($travelDateStart . " +5 days"));
             <p class="auth-subtitle">Package amount: Rs. <?php echo e(number_format($price, 2)); ?></p>
 
             <form method="POST" action="payment.php" id="booking-form">
-                <label for="travelers">Travelers</label>
-                <input type="number" id="travelers" name="travelers" min="1" max="20" value="<?php echo e((string)$travelers); ?>" required>
+                <div class="input-group">
+                    <label for="travelers">Travelers</label>
+                    <input type="number" id="travelers" name="travelers" min="1" max="20" value="<?php echo e((string)$travelers); ?>" required>
+                    <div class="error-msg" id="travelersError"></div>
+                </div>
 
-                <label for="travel_date_start">Start Date</label>
-                <input type="date" id="travel_date_start" name="travel_date_start" min="<?php echo e($today); ?>" value="<?php echo e($travelDateStart); ?>" required>
+                <div class="input-group">
+                    <label for="travel_date_start">Start Date</label>
+                    <input type="date" id="travel_date_start" name="travel_date_start" min="<?php echo e($today); ?>" value="<?php echo e($travelDateStart); ?>" required>
+                    <div class="error-msg" id="travelStartError"></div>
+                </div>
 
-                <label for="travel_date_end">End Date</label>
-                <input type="date" id="travel_date_end" name="travel_date_end" min="<?php echo e($today); ?>" value="<?php echo e($defaultEndDate); ?>" required>
+                <div class="input-group">
+                    <label for="travel_date_end">End Date</label>
+                    <input type="date" id="travel_date_end" name="travel_date_end" min="<?php echo e($today); ?>" value="<?php echo e($defaultEndDate); ?>" required>
+                    <div class="error-msg" id="travelEndError"></div>
+                </div>
 
-                <label for="accommodation_type">Accommodation</label>
-                <select id="accommodation_type" name="accommodation_type" required>
-                    <option value="Agency">Agency Arranged</option>
-                    <option value="Self">Self Arrange</option>
-                </select>
+                <div class="input-group">
+                    <label for="accommodation_type">Accommodation</label>
+                    <select id="accommodation_type" name="accommodation_type" required>
+                        <option value="Agency">Agency Arranged</option>
+                        <option value="Self">Self Arrange</option>
+                    </select>
+                    <div class="error-msg" id="accommodationError"></div>
+                </div>
 
                 <div class="booking-price-preview">
                     <h3>Total Price: <span id="totalPrice">Rs. 0.00</span></h3>
@@ -100,6 +112,7 @@ $defaultEndDate = date("Y-m-d", strtotime($travelDateStart . " +5 days"));
         </div>
     </section>
 
+    <script src="validation.js"></script>
     <script>
     const bookingForm = document.getElementById("booking-form");
     const travelersInput = document.getElementById("travelers");

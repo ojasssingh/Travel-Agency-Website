@@ -115,27 +115,45 @@ function money(float $value): string
 
                         <div class="method-panel active" data-panel="card">
                             <div class="card-icons" aria-hidden="true"><span>VISA</span><span>MC</span><span>AMEX</span></div>
-                            <input type="text" name="card_number" inputmode="numeric" autocomplete="cc-number" placeholder="Card Number">
-                            <input type="text" name="card_name" autocomplete="cc-name" placeholder="Card Holder Name">
+                            <div class="input-group">
+                                <input type="text" name="card_number" inputmode="numeric" autocomplete="cc-number" placeholder="Card Number">
+                                <div class="error-msg"></div>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" name="card_name" autocomplete="cc-name" placeholder="Card Holder Name">
+                                <div class="error-msg"></div>
+                            </div>
                             <div class="split-fields">
-                                <input type="text" name="card_expiry" placeholder="Expiry Date (MM/YY)">
-                                <input type="password" name="card_cvc" inputmode="numeric" placeholder="CVV/CVC">
+                                <div class="input-group">
+                                    <input type="text" name="card_expiry" placeholder="Expiry Date (MM/YY)">
+                                    <div class="error-msg"></div>
+                                </div>
+                                <div class="input-group">
+                                    <input type="password" name="card_cvc" inputmode="numeric" placeholder="CVV/CVC">
+                                    <div class="error-msg"></div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="method-panel" data-panel="upi">
-                            <input type="text" name="upi_id" placeholder="UPI ID (name@bank)">
+                            <div class="input-group">
+                                <input type="text" name="upi_id" placeholder="UPI ID (name@bank)">
+                                <div class="error-msg"></div>
+                            </div>
                             <p>Use any UPI app to approve this demo payment after submission.</p>
                         </div>
 
                         <div class="method-panel" data-panel="net_banking">
-                            <select name="bank_name">
-                                <option value="">Select Bank</option>
-                                <option value="State Bank of India">State Bank of India</option>
-                                <option value="HDFC Bank">HDFC Bank</option>
-                                <option value="ICICI Bank">ICICI Bank</option>
-                                <option value="Axis Bank">Axis Bank</option>
-                            </select>
+                            <div class="input-group">
+                                <select name="bank_name">
+                                    <option value="">Select Bank</option>
+                                    <option value="State Bank of India">State Bank of India</option>
+                                    <option value="HDFC Bank">HDFC Bank</option>
+                                    <option value="ICICI Bank">ICICI Bank</option>
+                                    <option value="Axis Bank">Axis Bank</option>
+                                </select>
+                                <div class="error-msg"></div>
+                            </div>
                         </div>
 
                         <div class="method-panel" data-panel="pay_at_arrival">
@@ -147,9 +165,18 @@ function money(float $value): string
                 <div class="payment-section">
                     <h2>Billing Details</h2>
                     <div class="billing-grid">
-                        <input type="text" name="billing_name" value="<?php echo e($userName); ?>" placeholder="Full Name" required>
-                        <input type="email" name="billing_email" value="<?php echo e($userEmail); ?>" placeholder="Email Address" required>
-                        <input type="tel" name="billing_phone" placeholder="Phone Number" required>
+                        <div class="input-group">
+                            <input type="text" name="billing_name" value="<?php echo e($userName); ?>" placeholder="Full Name" required>
+                            <div class="error-msg"></div>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" name="billing_email" value="<?php echo e($userEmail); ?>" placeholder="Email Address" required>
+                            <div class="error-msg"></div>
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" name="billing_phone" placeholder="Phone Number" required>
+                            <div class="error-msg"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -182,6 +209,7 @@ function money(float $value): string
         </form>
     </main>
 
+    <script src="validation.js"></script>
     <script>
     const countdown = document.getElementById("countdown");
     const payButton = document.getElementById("pay-button");

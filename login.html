@@ -25,8 +25,14 @@
             <h2>Login</h2>
 
             <form action="login.php" method="POST">
-                <input type="email" name="email" placeholder="Email" autocomplete="email" required>
-                <input type="password" name="password" placeholder="Password" autocomplete="current-password" required>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
+                    <div class="error-msg" id="emailError"></div>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Password" autocomplete="current-password" required>
+                    <div class="error-msg" id="passwordError"></div>
+                </div>
                 <label class="remember-me">
                     <input type="checkbox" name="remember_me" value="1">
                     Remember me for 7 days
@@ -37,5 +43,6 @@
             <a href="register.html">Create new account</a>
         </div>
     </div>
+    <script src="validation.js"></script>
 </body>
 </html>

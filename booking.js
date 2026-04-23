@@ -1,15 +1,17 @@
 // ================= DOM =================
 
-const form = document.getElementById("bookingForm");
+const form = document.getElementById("booking-form");
 const destination = document.getElementById("destination");
-const travelDate = document.getElementById("date");
-const passengers = document.getElementById("people");
+const travelDateStart = document.getElementById("travel_date_start");
+const travelers = document.getElementById("travelers");
 const hamburger = document.getElementById("hamburger");
 
 // ================= DATE HANDLING =================
 
 let today = new Date().toISOString().split("T")[0];
-travelDate.setAttribute("min", today);
+if (travelDateStart) {
+    travelDateStart.setAttribute("min", today);
+}
 
 // ================= EVENTS =================
 
@@ -19,6 +21,7 @@ if (hamburger) {
     });
 }
 
+if (form) {
 form.addEventListener("submit", function (event) {
 
     let isValid = validateForm();
@@ -33,8 +36,8 @@ form.addEventListener("submit", function (event) {
     let confirmBooking = confirm(
         "Confirm Booking?\n\n" +
         "Destination: " + destination.value +
-        "\nDate: " + travelDate.value +
-        "\nPeople: " + passengers.value
+        "\nDate: " + travelDateStart.value +
+        "\nTravelers: " + travelers.value
     );
 
     // ❌ If user cancels → STOP
@@ -45,6 +48,7 @@ form.addEventListener("submit", function (event) {
 
     // ✅ If confirmed → form goes to PHP (no alert here)
 });
+}
 
 // ================= VALIDATION =================
 
@@ -59,13 +63,13 @@ function validateForm() {
     }
 
     let today = new Date().toISOString().split("T")[0];
-    if (travelDate.value === "" || travelDate.value < today) {
-        showError(travelDate, "Select today or a future date");
+    if (travelDateStart.value === "" || travelDateStart.value < today) {
+        showError(travelDateStart, "Select today or a future date");
         valid = false;
     }
 
-    if (passengers.value === "" || passengers.value <= 0 || passengers.value > 1000) {
-        showError(passengers, "Enter valid number of people");
+    if (travelers.value === "" || travelers.value <= 0 || travelers.value > 1000) {
+        showError(travelers, "Enter valid number of travelers");
         valid = false;
     }
 

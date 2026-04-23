@@ -99,6 +99,7 @@ body {
 }
 
 .hero-book-btn {
+    display: inline-block;
     margin-top: 25px;
     padding: 14px 32px;
     border-radius: 50px;
@@ -107,6 +108,7 @@ body {
     border: none;
     font-weight: 600;
     cursor: pointer;
+    text-decoration: none;
 }
 
 /* CONTENT (UNCHANGED) */
@@ -207,9 +209,7 @@ h2 {
     <div class="hero-content">
         <h1>Cultural <br>Rajasthan</h1>
         <p>07 Days / 06 Nights Tour</p>
-        <button class="hero-book-btn" onclick="window.location.href='booking.html?place=Rajasthan'">
-            Book Now
-        </button>
+        <a class="hero-book-btn" href="booking.php?tour=Rajasthan&price=35000">Book Now</a>
     </div>
 </div>
 

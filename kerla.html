@@ -94,6 +94,7 @@ body {
 }
 
 .hero-book-btn {
+    display: inline-block;
     margin-top: 25px;
     padding: 14px 32px;
     border-radius: 50px;
@@ -102,6 +103,7 @@ body {
     border: none;
     font-weight: 600;
     cursor: pointer;
+    text-decoration: none;
 }
 
 /* CONTENT */
@@ -206,9 +208,7 @@ h2 {
     <div class="hero-content">
         <h1>Kerala <br>Delight</h1>
         <p>06 Days </p>
-        <button class="hero-book-btn" onclick="window.location.href='booking.html?place=Kerala'">
-            Book Now
-        </button>
+        <a class="hero-book-btn" href="booking.php?tour=Kerala&price=45000">Book Now</a>
     </div>
 </div>
 

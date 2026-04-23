@@ -32,13 +32,12 @@ document.querySelectorAll(".subscribe-form").forEach((form) => {
  
 // ================= CARD CLICK / BOOK BUTTONS / FADE =================
  
-document.querySelectorAll(".book-btn[data-book-place]").forEach((btn) => {
+document.querySelectorAll(".book-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        window.location.href = "booking.html?place=" + encodeURIComponent(btn.dataset.bookPlace);
     });
 });
- 
+
 document.querySelectorAll(".card[data-detail]").forEach((card, i) => {
     card.style.transitionDelay = i * 0.1 + "s";
     card.addEventListener("click", () => { window.location.href = card.dataset.detail; });
@@ -96,11 +95,10 @@ window.addEventListener("DOMContentLoaded", function () {
                 if (e.key === "Enter" || e.key === " ") { e.preventDefault(); window.location.href = root.dataset.detail; }
             });
         }
-        var btn = (root.querySelector ? root.querySelector(".book-btn[data-book-place]") : null);
+        var btn = (root.querySelector ? root.querySelector(".book-btn") : null);
         if (btn) {
             btn.addEventListener("click", function(e) {
                 e.stopPropagation();
-                window.location.href = "booking.html?place=" + encodeURIComponent(btn.dataset.bookPlace);
             });
         }
     }

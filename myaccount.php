@@ -26,30 +26,43 @@ mysqli_stmt_close($userStmt);
 $bookings = [];
 $bookingStmt = mysqli_prepare(
     $conn,
-    "SELECT destination, travel_date, end_date, days, people, hotel_type, preferences, created_at, status
-     FROM bookings
-     WHERE user_email = ?
-     ORDER BY created_at DESC"
+    "SELECT
+        b.id,
+        b.destination,
+        b.total_amount,
+        b.status,
+        p.payment_method,
+        p.payment_date
+     FROM bookings b
+     LEFT JOIN payments p ON b.id = p.booking_id
+     WHERE b.user_id = ?
+     ORDER BY b.created_at DESC"
 );
 
 if ($bookingStmt) {
-    mysqli_stmt_bind_param($bookingStmt, "s", $email);
+    $sessionUserId = (int)$_SESSION['user_id'];
+    mysqli_stmt_bind_param($bookingStmt, "i", $sessionUserId);
     if (!mysqli_stmt_execute($bookingStmt)) {
         die("Booking query failed: " . mysqli_stmt_error($bookingStmt));
     }
-    mysqli_stmt_bind_result($bookingStmt, $destination, $travelDate, $endDate, $days, $people, $hotelType, $preferences, $createdAt, $status);
+    mysqli_stmt_bind_result(
+        $bookingStmt,
+        $bookingId,
+        $destination,
+        $totalAmount,
+        $status,
+        $paymentMethod,
+        $paymentDate
+    );
 
     while (mysqli_stmt_fetch($bookingStmt)) {
         $bookings[] = [
+            'booking_id' => $bookingId,
             'destination' => $destination,
-            'travel_date' => $travelDate,
-            'end_date' => $endDate,
-            'days' => $days,
-            'people' => $people,
-            'hotel_type' => $hotelType,
-            'preferences' => $preferences,
-            'created_at' => $createdAt,
+            'total_amount' => $totalAmount,
             'status' => $status,
+            'payment_method' => $paymentMethod,
+            'payment_date' => $paymentDate,
         ];
     }
 
@@ -79,7 +92,7 @@ mysqli_close($conn);
 
         <nav>
             <a href="myaccount.php">My Account</a>
-            <a href="booking.html">Book</a>
+            <a href="index.html#tours">Book</a>
             <a href="Contact.html">Contact Us</a>
         </nav>
     </header>
@@ -117,14 +130,12 @@ mysqli_close($conn);
                 <?php else: ?>
                     <?php foreach ($bookings as $booking): ?>
                         <div class="booking-card">
-                            <p><strong>Destination:</strong> <?php echo htmlspecialchars($booking['destination'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p><strong>Start:</strong> <?php echo htmlspecialchars($booking['travel_date'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p><strong>End:</strong> <?php echo htmlspecialchars($booking['end_date'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p><strong>Status:</strong> <?php echo htmlspecialchars($booking['status'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p><strong>Days:</strong> <?php echo htmlspecialchars((string)$booking['days'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p><strong>People:</strong> <?php echo htmlspecialchars((string)$booking['people'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p><strong>Hotel:</strong> <?php echo htmlspecialchars($booking['hotel_type'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p><strong>Preferences:</strong> <?php echo htmlspecialchars($booking['preferences'] ?: 'None', ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p><strong>Booking ID:</strong> #ST-<?php echo htmlspecialchars(str_pad((string)$booking['booking_id'], 5, '0', STR_PAD_LEFT), ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p><strong>Destination:</strong> <?php echo htmlspecialchars($booking['destination'] ?: 'Tour Booking', ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p><strong>Amount:</strong> Rs. <?php echo htmlspecialchars(number_format((float)$booking['total_amount'], 2), ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p><strong>Status:</strong> <?php echo htmlspecialchars($booking['status'] ?: 'CONFIRMED', ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p><strong>Payment:</strong> <?php echo htmlspecialchars($booking['payment_method'] ?: 'Pending', ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p><strong>Payment Date:</strong> <?php echo htmlspecialchars($booking['payment_date'] ?: 'Pending', ENT_QUOTES, 'UTF-8'); ?></p>
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>

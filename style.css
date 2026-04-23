@@ -788,6 +788,10 @@ footer {
     color: #1f2d3a;
 }
 
+.remember-me {
+    margin-top: 4px;
+}
+
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
